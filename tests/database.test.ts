@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PGlite } from "@electric-sql/pglite";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 const ownerId = "11111111-1111-4111-8111-111111111111";
 const visitorId = "22222222-2222-4222-8222-222222222222";
 let db: PGlite;
@@ -17,18 +17,14 @@ beforeAll(async () => {
     alter table storage.objects enable row level security;
     create function storage.foldername(text) returns text[] language sql immutable as $$ select string_to_array($1, '/') $$;
     grant usage on schema public, auth, storage to anon, authenticated;
+    alter default privileges in schema public grant execute on functions to anon, authenticated;
     grant insert, select, update, delete on storage.objects to anon, authenticated;
     insert into auth.users(id) values ('${ownerId}'), ('${visitorId}');
   `);
-  await db.exec(
-    await readFile(
-      new URL(
-        "../supabase/migrations/202609170001_site_content.sql",
-        import.meta.url,
-      ),
-      "utf8",
-    ),
-  );
+  const migrations = new URL("../supabase/migrations/", import.meta.url);
+  for (const file of (await readdir(migrations)).sort()) {
+    await db.exec(await readFile(new URL(file, migrations), "utf8"));
+  }
   await db.query("insert into public.site_owners(user_id) values ($1)", [
     ownerId,
   ]);
@@ -53,7 +49,10 @@ describe("owner content and media permissions", () => {
     expect(result.rows).toEqual([{ id: "published" }]);
     await expect(
       db.query("select public.publish_site_draft(0)"),
-    ).rejects.toThrow();
+    ).rejects.toThrow(/permission denied/);
+    await expect(
+      db.query("select public.save_site_draft('{}'::jsonb, 0)"),
+    ).rejects.toThrow(/permission denied/);
   });
   it("denies an unapproved Google user draft access, publication, and owner enrollment", async () => {
     await asUser(visitorId);
