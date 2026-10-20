@@ -1,5 +1,5 @@
 {
-  "note": "Existing client website assets, downloaded 2026-09-17. Temporary pending replacement photography.",
+  "note": "Images listed under \"images\" came from the old client website on 2026-09-17 and are kept so previously published content still resolves.",
   "images": [
     {
       "file": "riverfront.webp",
@@ -42,5 +42,111 @@
       "wordmark": "Create a clean cutout of the upper horizontal logo only. Keep precisely the source symbol and exact Fox River RECREATION lettering. All visible artwork is solid flat sign blue #1A6FC4 with sharp clean edges. Background fully transparent (alpha zero), no black background and absolutely NO GLOW, no blur, no shadow, no gradient or effects. Remove all original cream paper background. Remove the second standalone symbol at the bottom. Final asset wide horizontal transparent logo, minimal empty padding, preserve original design.",
       "icon": "Extract ONLY the standalone blue river/fox-tail symbol at the BOTTOM of the supplied image for a favicon. Preserve the exact original symbol shape and proportions. Center it on a square truly transparent alpha background, occupying 85% of the square width. Flat solid sign blue #1A6FC4 silhouette, sharp clean edges. Remove cream paper background and all lettering/top logo completely. No text. Absolutely no glow, no shadows, no gradients, no mockup. This is faithful background extraction, not a redesign."
     }
+  },
+  "clientPhotos": {
+    "source": "Client Google Drive download, received 2026-10-19",
+    "preparation": "Resized to 1920px on the long edge and converted to WebP without metadata. Video re-encoded to H.264.",
+    "files": [
+      {
+        "file": "entrance-drive.webp",
+        "source": "IMG_6930.jpeg"
+      },
+      {
+        "file": "riverside-patio-dinner.webp",
+        "source": "IMG_6940.jpeg"
+      },
+      {
+        "file": "aerial-rv-sites.webp",
+        "source": "copy_E535CD46-B9E4-4230-8973-6DB12F7C8B40.mov @ 0:18"
+      },
+      {
+        "file": "river-docks.webp",
+        "source": "copy_E535CD46-B9E4-4230-8973-6DB12F7C8B40.mov @ 0:24"
+      },
+      {
+        "file": "aerial-tour.mp4",
+        "source": "copy_E535CD46-B9E4-4230-8973-6DB12F7C8B40.mov, title card trimmed, audio removed"
+      },
+      {
+        "file": "pool-summer.webp",
+        "source": "IMG_1754.jpeg"
+      },
+      {
+        "file": "easter-bunny-visit.webp",
+        "source": "IMG_1467.jpeg"
+      },
+      {
+        "file": "hayride.webp",
+        "source": "IMG_0843.jpeg"
+      },
+      {
+        "file": "gazebo-dinner.webp",
+        "source": "site 1.jpg"
+      },
+      {
+        "file": "welcome-sign.webp",
+        "source": "IMG_6928.jpeg"
+      },
+      {
+        "file": "sand-volleyball.webp",
+        "source": "IMG_0281.jpeg"
+      },
+      {
+        "file": "fourth-of-july-picnic.webp",
+        "source": "IMG_1009.jpeg"
+      },
+      {
+        "file": "picnic-under-umbrellas.webp",
+        "source": "IMG_0996.jpeg"
+      },
+      {
+        "file": "pavilion-live-music.webp",
+        "source": "IMG_1001.jpeg"
+      },
+      {
+        "file": "basketball-court.webp",
+        "source": "IMG_7921.jpeg"
+      },
+      {
+        "file": "tug-of-war.webp",
+        "source": "IMG_9280.jpeg"
+      },
+      {
+        "file": "playground-games.webp",
+        "source": "IMG_7885.jpeg"
+      },
+      {
+        "file": "lawn-games.webp",
+        "source": "491485437_1263095238868925_4501978578902472680_n.jpg"
+      },
+      {
+        "file": "kids-circle-game.webp",
+        "source": "IMG_0024.jpeg"
+      },
+      {
+        "file": "holiday-pavilion.webp",
+        "source": "IMG_1758.jpeg"
+      },
+      {
+        "file": "halloween-party.webp",
+        "source": "IMG_1309.jpeg"
+      },
+      {
+        "file": "easter-lodge.webp",
+        "source": "673484109_1576017874243325_4325705420759876442_n.jpg"
+      },
+      {
+        "file": "picnic-tables.webp",
+        "source": "742859167_1654797026365409_8740559702047818759_n.jpg"
+      },
+      {
+        "file": "tent-cookout.webp",
+        "source": "IMG_0693.jpeg"
+      },
+      {
+        "file": "kids-field-game.webp",
+        "source": "IMG_2073.jpeg"
+      }
+    ]
   }
 }
