@@ -183,7 +183,7 @@ p {
 .brand {
   display: block;
   flex-shrink: 0;
-  width: 260px;
+  width: 88px;
   text-decoration: none;
 }
 .brand-logo {
@@ -191,8 +191,8 @@ p {
   width: 100%;
   height: auto;
 }
-.footer .brand-logo {
-  filter: brightness(0) invert(96%) sepia(10%) saturate(251%) hue-rotate(3deg);
+.footer .brand {
+  width: 132px;
 }
 .desktop-nav {
   display: flex;
@@ -840,7 +840,7 @@ p {
     letter-spacing: 0.08em;
   }
   .brand {
-    width: 220px;
+    width: 72px;
   }
   .section-heading {
     align-items: start;
