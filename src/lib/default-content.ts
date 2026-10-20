@@ -8,10 +8,10 @@ export const defaultContent: SiteContent = {
     description:
       "Slow mornings. Days on the water. Nights under the stars. Find your happy place at our family-owned campground.",
     image: {
-      src: "/images/riverfront.webp",
-      alt: "Boats moored along the tree-lined Fox River at the campground",
+      src: "/images/entrance-drive.webp",
+      alt: "The tree-lined entrance drive and welcome sign at Fox River Recreation",
     },
-    video: "",
+    video: "/images/aerial-tour.mp4",
   },
   intro: {
     eyebrow: "A place to come back to",
@@ -25,8 +25,8 @@ export const defaultContent: SiteContent = {
       description:
         "Pull in, hook up, and settle into life by the river. Water, electric, and full hookup options available.",
       image: {
-        src: "/images/camping.webp",
-        alt: "Campsites among mature trees at Fox River Recreation",
+        src: "/images/aerial-rv-sites.webp",
+        alt: "Aerial view of RV sites under the trees along the Fox River",
       },
       rateId: "rv-night",
     },
@@ -47,8 +47,8 @@ export const defaultContent: SiteContent = {
       description:
         "Your favorite spot, all season long. Choose a riverside, off-river, or full hookup seasonal site.",
       image: {
-        src: "/images/seasonal.webp",
-        alt: "Seasonal camping beside the Fox River",
+        src: "/images/riverside-patio-dinner.webp",
+        alt: "Seasonal campers sharing dinner on a covered riverside patio",
       },
       rateId: "season-off",
     },
@@ -57,8 +57,8 @@ export const defaultContent: SiteContent = {
     title: "Take the scenic route.\nPreferably by water.",
     body: "Launch your boat and explore the Chain O'Lakes, rent a canoe for a quiet paddle, or find your favorite fishing spot. With the Fox River right here, a day on the water is always within reach.",
     image: {
-      src: "/images/boating.webp",
-      alt: "Boats and docks on the Fox River",
+      src: "/images/river-docks.webp",
+      alt: "Pontoon boats tied up at the campground docks on the Fox River",
     },
   },
   amenities: [
@@ -125,20 +125,84 @@ export const defaultContent: SiteContent = {
   ],
   gallery: [
     {
-      src: "/images/riverfront.webp",
-      alt: "A calm day on the Fox River beside the campground",
+      src: "/images/pool-summer.webp",
+      alt: "Guests swimming in the outdoor pool on a sunny day",
     },
     {
-      src: "/images/pool.webp",
-      alt: "The outdoor swimming pool at Fox River Recreation",
+      src: "/images/easter-bunny-visit.webp",
+      alt: "Kids with Easter baskets posing with the Easter Bunny",
     },
     {
-      src: "/images/camping.webp",
-      alt: "Shaded campsites at Fox River Recreation",
+      src: "/images/hayride.webp",
+      alt: "Kids waving from a hay wagon ride through the campground",
     },
     {
-      src: "/images/community.webp",
-      alt: "Time together at Fox River Recreation",
+      src: "/images/gazebo-dinner.webp",
+      alt: "Friends sharing dinner under a gazebo by the water",
+    },
+    {
+      src: "/images/welcome-sign.webp",
+      alt: "The Fox River Recreation welcome sign at the park entrance",
+    },
+    {
+      src: "/images/sand-volleyball.webp",
+      alt: "A game of sand volleyball beside the RV sites",
+    },
+    {
+      src: "/images/fourth-of-july-picnic.webp",
+      alt: "A Fourth of July picnic with red, white, and blue balloons",
+    },
+    {
+      src: "/images/picnic-under-umbrellas.webp",
+      alt: "Campers gathered at picnic tables under orange umbrellas",
+    },
+    {
+      src: "/images/pavilion-live-music.webp",
+      alt: "Live music and dancing under the pavilion",
+    },
+    {
+      src: "/images/basketball-court.webp",
+      alt: "Kids shooting hoops at the campground basketball court",
+    },
+    {
+      src: "/images/tug-of-war.webp",
+      alt: "A tug-of-war match on the lawn",
+    },
+    {
+      src: "/images/playground-games.webp",
+      alt: "Families playing lawn games by the playground",
+    },
+    {
+      src: "/images/lawn-games.webp",
+      alt: "Kids racing through a lawn game on a summer afternoon",
+    },
+    {
+      src: "/images/kids-circle-game.webp",
+      alt: "Kids sitting in a circle for a group game on the grass",
+    },
+    {
+      src: "/images/holiday-pavilion.webp",
+      alt: "Kids on hay bales at a holiday party in the pavilion",
+    },
+    {
+      src: "/images/halloween-party.webp",
+      alt: "Campers in costume at the Halloween party in the lodge",
+    },
+    {
+      src: "/images/easter-lodge.webp",
+      alt: "The Easter Bunny visiting kids in the lodge",
+    },
+    {
+      src: "/images/picnic-tables.webp",
+      alt: "Campers gathering at the picnic tables near the lodge",
+    },
+    {
+      src: "/images/tent-cookout.webp",
+      alt: "A potluck cookout under a white party tent",
+    },
+    {
+      src: "/images/kids-field-game.webp",
+      alt: "Kids playing a game in the open field",
     },
   ],
   reviews: [

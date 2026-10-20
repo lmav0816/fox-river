@@ -66,7 +66,7 @@ Do this with an owner present, using the business's own Google account, not a de
 
 ## Content and launch dependencies
 
-Existing client photography was downloaded from the current website and optimized to WebP. Source URLs are recorded in `public/images/sources.json`. Replace these with the client's new photography and drone footage. The cabin card currently uses a river sunset, not a claimed photo of a cabin. The client-supplied September 17 logo is used in the header, footer, owner editor, and browser icon, with transparent assets prepared using imagegen. Fonts are self-hosted with their OFL licenses.
+The homepage uses the client's October 2026 photography and drone footage, resized and converted to WebP and H.264. The original filename of each file is recorded in `public/images/sources.json`, alongside the photos first downloaded from the old website. Those older files stay in place because previously published content may still reference them. The cabin card still uses a river sunset from the old website, because no cabin photo has been supplied yet. The client-supplied September 17 logo is used in the header, footer, owner editor, and browser icon, with transparent assets prepared using imagegen. Fonts are self-hosted with their OFL licenses.
 
 The source content was checked on September 17, 2026. Confirm these with the client before launch:
 
