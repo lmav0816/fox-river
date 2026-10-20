@@ -7,9 +7,9 @@ export function Brand() {
       <Image
         src="/images/fox-river-logo.webp"
         alt={siteName}
-        width={1073}
-        height={367}
-        sizes="260px"
+        width={640}
+        height={640}
+        sizes="132px"
         className="brand-logo"
       />
     </Link>
