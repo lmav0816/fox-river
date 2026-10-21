@@ -70,11 +70,8 @@ The homepage uses the client's October 2026 photography and drone footage, resiz
 
 The source content was checked on September 17, 2026. Confirm these with the client before launch:
 
-- Family pass: the old rate-page data contains both $175 and $200. The new site says to call.
-- Adult day visitors: the rates page says $10, while embedded park rules say $5. The new site says to call.
 - Overnight guest registration: the rates page says 8 pm; embedded rules say 5 pm. The new site asks guests to confirm the deadline.
 - Visitor departure times and campsite departure times differ by visitor type in the old rules. Confirm the wording and times.
-- Cabin cancellation uses 72 hours; campsite rules use 48 hours. These are preserved as separate policies, pending confirmation.
 - The old dog-liability wording is unusual and is preserved for review. Confirm the full policy text and all copied rules. The editor's complete-rules checkbox remains unchecked until the owner approves the policy.
 - Rates, seasonal dates, contact email, and approved owner identities need final confirmation. The default email uses the displayed `foxriver13@gmail.com`, not the old mismatched mailto destination.
 - Three existing testimonials are retained; the third uses the complete sentences available in the original excerpt. No aggregate rating is claimed.

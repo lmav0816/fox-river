@@ -64,7 +64,7 @@ export function RatesPage({ content: c }: { content: SiteContent }) {
           <h2 className="display text-3xl">A few things before you pack.</h2>
           <p className="body-copy my-4 text-sm">
             Cabins require a two-night minimum, deposit, and ID. Check-in is at
-            3 pm or later and check-out is at 1 pm. Please review the
+            3 pm or later and check-out is at 12 pm. Please review the
             reservation and visitor policies before your stay.
           </p>
           <Link href="/rules" className="text-link">
