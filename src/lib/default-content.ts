@@ -239,14 +239,14 @@ export const defaultContent: SiteContent = {
         {
           id: "rv-week",
           name: "Weekly campsite",
-          amount: 360,
+          amount: 400,
           unit: "/ week",
           note: "Plus electric",
         },
         {
           id: "rv-month",
           name: "Monthly campsite",
-          amount: 980,
+          amount: 1120,
           unit: "/ month",
           note: "Plus electric",
         },
@@ -261,21 +261,21 @@ export const defaultContent: SiteContent = {
         {
           id: "season-east",
           name: "East side",
-          amount: 4195,
+          amount: 4395,
           unit: "/ season",
           note: "Full hookups including sewer, plus electric",
         },
         {
           id: "season-river",
           name: "Riverside",
-          amount: 4195,
+          amount: 4395,
           unit: "/ season",
           note: "Plus electric",
         },
         {
           id: "season-off",
           name: "Off river",
-          amount: 3795,
+          amount: 3995,
           unit: "/ season",
           note: "Plus electric",
         },
@@ -319,14 +319,14 @@ export const defaultContent: SiteContent = {
         {
           id: "canoe-hour",
           name: "Canoe rental",
-          amount: 15,
+          amount: 20,
           unit: "/ hour",
           note: "",
         },
         {
           id: "canoe-day",
           name: "Full-day canoe rental",
-          amount: 35,
+          amount: 45,
           unit: "/ day",
           note: "",
         },
@@ -340,7 +340,7 @@ export const defaultContent: SiteContent = {
         {
           id: "launch-public",
           name: "Boat launch · non-tenants",
-          amount: 10,
+          amount: 15,
           unit: "/ launch",
           note: "",
         },
@@ -354,7 +354,7 @@ export const defaultContent: SiteContent = {
         {
           id: "dock-public",
           name: "Dock · non-tenants",
-          amount: 600,
+          amount: 700,
           unit: "/ season",
           note: "",
         },
@@ -368,14 +368,21 @@ export const defaultContent: SiteContent = {
         {
           id: "storage-public",
           name: "Boat storage · non-tenants",
-          amount: 700,
+          amount: 600,
           unit: "/ season",
           note: "",
         },
         {
+          id: "winter-storage-deposit",
+          name: "Winter storage · with deposit",
+          amount: 100,
+          unit: "",
+          note: "Call for details",
+        },
+        {
           id: "winter-storage",
-          name: "Off-season winter storage",
-          amount: 200,
+          name: "Winter storage · without deposit",
+          amount: 250,
           unit: "",
           note: "Call for details",
         },
@@ -385,14 +392,14 @@ export const defaultContent: SiteContent = {
       id: "passes",
       title: "Passes & visitors",
       description:
-        "Please stop at the office when you arrive. Call to confirm the current family-pass price.",
+        "Please stop at the office when you arrive.",
       rates: [
         {
           id: "pass-family",
           name: "Family pass",
-          amount: null,
+          amount: 200,
           unit: "/ season",
-          note: "Contact the office for the current rate",
+          note: "2 adults and 2 children",
         },
         {
           id: "pass-single",
@@ -403,10 +410,10 @@ export const defaultContent: SiteContent = {
         },
         {
           id: "visitor",
-          name: "Adult day visitor",
-          amount: null,
+          name: "Visitor day pass",
+          amount: 10,
           unit: "/ person",
-          note: "Contact the office for the current visitor fee",
+          note: "",
         },
         {
           id: "overnight",
@@ -426,14 +433,14 @@ export const defaultContent: SiteContent = {
         {
           id: "pavilion",
           name: "Pavilion rental",
-          amount: 200,
+          amount: 300,
           unit: "/ day",
           note: "",
         },
         {
           id: "barn",
           name: "Barn rental",
-          amount: 300,
+          amount: 450,
           unit: "/ day",
           note: "",
         },
@@ -464,11 +471,11 @@ export const defaultContent: SiteContent = {
   rules: [
     {
       title: "Cabin check-in & check-out",
-      body: "Cabin check-in is at 3 pm or later. Check-out is at 1 pm. Cabin rentals have a two-night minimum. A deposit and ID are required.",
+      body: "Cabin check-in is at 3 pm or later. Check-out is at 12 pm. Cabin rentals have a two-night minimum. A deposit and ID are required.",
     },
     {
       title: "Cabin reservations & cancellations",
-      body: "Full payment is due at the time of reservation. Visa and MasterCard are accepted. Cancellations received at least 72 hours before the reservation date qualify for a full refund less a $15 service charge.",
+      body: "Full payment is due at the time of reservation. Visa and MasterCard are accepted. Cancellations received at least 72 hours before the reservation date qualify for a full refund less a $25 cancellation fee.",
     },
     {
       title: "Pets in cabins",
@@ -476,11 +483,11 @@ export const defaultContent: SiteContent = {
     },
     {
       title: "Campers & sites",
-      body: "One RV per site, maximum of 2 cars. Persons must be 21 years or older, with ID required. The park defines a family as mom/dad and dependent children.",
+      body: "One RV per site, maximum of 2 cars. Persons must be 21 years or older, with ID required. The park defines a family as mom/dad and dependent children. No “For Sale” signs are allowed in the park.",
     },
     {
       title: "Visitors & overnight guests",
-      body: "Visitors must check in at the office. A pass is required and must be displayed on the left side window of your vehicle. Please confirm the current visitor fee, visitor departure time, and overnight registration deadline with the office before your visit. Overnight guests must sign up and pay at the office.",
+      body: "Visitors must check in at the office. A visitor day pass is $10 per person and must be displayed on the left side window of your vehicle. Please confirm the visitor departure time and overnight registration deadline with the office before your visit. Overnight guests must sign up and pay at the office.",
     },
     {
       title: "Speed limit",
@@ -488,7 +495,7 @@ export const defaultContent: SiteContent = {
     },
     {
       title: "Quiet time",
-      body: "Quiet time is 10 pm to 8 am, except Friday and Saturday when it is midnight to 8 am.",
+      body: "Quiet time is 10 pm to 9 am, except Friday and Saturday when it is midnight to 9 am.",
     },
     {
       title: "Dogs at campsites",
@@ -496,7 +503,7 @@ export const defaultContent: SiteContent = {
     },
     {
       title: "Children & water safety",
-      body: "Children must be accompanied by an adult at all times. No children are allowed in the pool without adult supervision. Children must wear a life vest on the riverfront and on the pier at all times, with adult supervision. All children must be by their sites by 9 pm. No loud music or other disturbances during this time.",
+      body: "Children must be accompanied by an adult at all times. No children are allowed in the pool without adult supervision. Children must wear a life vest on the riverfront and on the pier at all times, with adult supervision. All children must be at their sites by dusk. No loud music or other disturbances during this time.",
     },
     {
       title: "Campfires",
@@ -504,7 +511,7 @@ export const defaultContent: SiteContent = {
     },
     {
       title: "Golf carts",
-      body: "Golf carts must be registered in the office with proof of insurance. People under 18 years of age cannot drive golf carts in the park. Lights must be used on golf carts after dark; without lights, you cannot drive.",
+      body: "Golf carts must be registered in the office with proof of insurance. People under 16 years of age cannot drive golf carts in the park. Lights must be used on golf carts after dark; without lights, you cannot drive.",
     },
     {
       title: "Prohibited items & riding",
@@ -512,11 +519,11 @@ export const defaultContent: SiteContent = {
     },
     {
       title: "Campsite refunds & departures",
-      body: "No refunds for inclement weather, early departures, or eviction. The posted campsite rules specify that deposits are returned for cancellations received 48 hours before the reserved date, with a $15 cancellation fee per reserved site. Cabin reservations have the separate cancellation policy above. Campsite check-out is by 8 pm; the posted late check-out charge is $10 per hour. Notify management of any late check-out.",
+      body: "No refunds for inclement weather, early departures, or eviction. Deposits are returned for cancellations received at least 72 hours before the reserved date, less a $25 cancellation fee per reserved site. Campsite check-out is at 12 pm; the posted late check-out charge is $10 per hour. Notify management of any late check-out.",
     },
     {
       title: "Messages, activities & gates",
-      body: "Emergency messages will be brought to your site. Other messages are displayed on the game room billboard. Ask at the store for special activities and events. Do not open the entrance gates for other people.",
+      body: "Emergency messages will be brought to your attention. Other messages are displayed on the billboard. Ask at the store for special activities and events. Do not open the entrance gates for other people.",
     },
   ],
   parkRulesComplete: false,

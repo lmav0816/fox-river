@@ -77,7 +77,7 @@ test("rates and rules preserve fees, policies, and mobile layout", async ({
   await page.goto("/rates");
   await expect(page.locator("#camping")).toContainText("$60");
   await expect(page.locator("#cabins")).toContainText("$160");
-  await expect(page.locator("#passes")).toContainText("Please call");
+  await expect(page.locator("#passes")).toContainText("$200");
   await expectNoHorizontalOverflow(page);
   await page.getByRole("link", { name: "Read the visiting guide" }).click();
   await expect(
