@@ -152,7 +152,15 @@ test("invalid rates cannot be saved and unauthenticated draft previews are prote
   );
 });
 
-for (const path of ["/", "/rates", "/rules", "/admin", "/admin/demo"]) {
+for (const path of [
+  "/",
+  "/rates",
+  "/rules",
+  "/privacy",
+  "/terms",
+  "/admin",
+  "/admin/demo",
+]) {
   test(`accessibility and overflow: ${path}`, async ({ page }) => {
     await page.goto(path);
     const audit = await new AxeBuilder({ page })

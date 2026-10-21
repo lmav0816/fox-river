@@ -32,6 +32,7 @@ export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
           </span>
           <span className="flex gap-5">
             <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
             <Link href="/admin">Owner sign-in</Link>
           </span>
         </div>
