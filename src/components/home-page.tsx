@@ -28,6 +28,7 @@ import { SiteFooter } from "./site-footer";
 import { Hero } from "./hero";
 import { Gallery } from "./gallery";
 import { Button } from "./ui/button";
+import { Tag } from "./ui/tag";
 import {
   formatAddress,
   formatPrice,
@@ -98,9 +99,12 @@ export function HomePage({ content: c }: { content: SiteContent }) {
                       sizes="(max-width: 520px) 100vw, 33vw"
                       className="photo"
                     />
-                    <span className="photo-tag">
+                    <Tag
+                      variant="photo"
+                      className="absolute bottom-[17px] left-[17px]"
+                    >
                       0{i + 1} / {label}
-                    </span>
+                    </Tag>
                   </Link>
                   <div className="stay-body">
                     <h3 className="display">{stay.title}</h3>

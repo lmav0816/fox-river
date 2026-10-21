@@ -332,17 +332,6 @@ p {
   font-size: 18px;
   font-weight: 500;
 }
-.photo-tag {
-  position: absolute;
-  left: 17px;
-  bottom: 17px;
-  padding: 7px 11px;
-  background: #f4f7fbf2;
-  font-size: 9px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
 .amenities-section {
   background: #e3ecf6;
 }
