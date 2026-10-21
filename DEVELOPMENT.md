@@ -34,7 +34,9 @@ insert into public.site_owners(user_id) values ('THE-VERIFIED-AUTH-USER-UUID');
 
 Public reads can access only the published row. Writes require owner membership in both the server actions and PostgreSQL functions. Draft saves and publication check the expected version to reject stale changes. Database functions lock the draft row during publication. Uploaded files have immutable paths, so replacing draft media cannot alter a currently published image. The public media bucket is for website assets only, not private files. Draft text is private, but uploaded assets are publicly accessible by URL before publication.
 
-The editor supports homepage copy, rates, photos, background video, amenities, reviews, rules, and contact details. Shared rate IDs keep featured prices consistent across pages. Save leaves a private draft; publish updates the public content and invalidates its cache. The preview button shows current edits; `/admin/preview` shows the saved draft to authenticated owners.
+The editor supports homepage copy, rates, photos, background video, events, amenities, reviews, rules, and contact details. Shared rate IDs keep featured prices consistent across pages. Save leaves a private draft; publish updates the public content and invalidates its cache. The preview button shows current edits; `/admin/preview` shows the saved draft to authenticated owners.
+
+Events are calendar dates without a time zone. `src/lib/events.ts` reads "today" in `America/Chicago` and hides an event after its end date (or its start date for one-day events). The homepage and `/events` set `revalidate = 3600`, so a past event drops off within an hour of midnight without a publish. Content saved before events existed has no `events` key; the schema reads it as an empty list.
 
 ## Security headers
 
@@ -44,7 +46,7 @@ The editor supports homepage copy, rates, photos, background video, amenities, r
 
 Every public page carries a canonical URL, a page-specific title, description, and Open Graph card, and one `application/ld+json` graph built in `src/lib/seo.ts`. The graph links four nodes by `@id` so search engines read them as one entity: a `Campground`, the `WebSite` it publishes, the current `WebPage`, and a `BreadcrumbList` on pages below the homepage.
 
-The `Campground` node is derived from published content, so it stays accurate when an owner edits the site. It carries the street address split into locality, region, and postal code, the phone number in E.164 form, map coordinates when both are filled in, the amenity list, the languages spoken, a nightly `priceRange` computed from rates whose unit mentions a night, a Google Maps link, and the hero plus the first gallery photos as candidate listing images. `sameAs` carries the Facebook page and the Google Business Profile, which is what ties the listing's reviews to this domain. Blank profile links are dropped rather than emitted empty, and the Facebook links disappear from the site when that field is cleared.
+The `Campground` node is derived from published content, so it stays accurate when an owner edits the site. It carries the street address split into locality, region, and postal code, the phone number in E.164 form, map coordinates when both are filled in, the amenity list, the languages spoken, a nightly `priceRange` computed from rates whose unit mentions a night, a Google Maps link, and the hero plus the first gallery photos as candidate listing images. `sameAs` carries the Facebook page and the Google Business Profile, which is what ties the listing's reviews to this domain. Blank profile links are dropped rather than emitted empty, and the Facebook links disappear from the site when that field is cleared. `/events` adds an `Event` node for each upcoming event, with the `Campground` as its location and organizer.
 
 The contact tab of the owner editor holds all of it: street, city, state, ZIP, map latitude and longitude, the Facebook link, and the Google Business Profile link.
 
@@ -81,7 +83,7 @@ The source content was checked on September 17, 2026. Confirm these with the cli
 - The old dog-liability wording is unusual and is preserved for review. Confirm the full policy text and all copied rules. The editor's complete-rules checkbox remains unchecked until the owner approves the policy.
 - Rates, seasonal dates, contact email, and approved owner identities need final confirmation. The default email uses the displayed `foxriver13@gmail.com`, not the old mismatched mailto destination.
 - Three existing testimonials are retained; the third uses the complete sentences available in the original excerpt. No aggregate rating is claimed.
-- Events link to the existing Facebook page because the old site mixes dated schedules. No unconfirmed future events are advertised.
+- The events list starts empty because the old site mixes dated schedules. Owners post confirmed events in the editor.
 - The mailing address, the map coordinates, and the seasonal hours all need to match the Google Business Profile exactly. Confirm them once and enter them in both places.
 - Obtain the paid scope document and any additional text-message requirements referenced in the kickoff.
 
@@ -106,4 +108,4 @@ pnpm test:e2e
 pnpm build
 ```
 
-Unit tests cover content validation, the structured-data graph, and the migration's owner checks, RLS, publication, stale-version rejection, and upload policies in PGlite. Browser tests cover desktop/mobile navigation, security headers and Content Security Policy violations, the Google reviews link, gallery behavior, local editing and previews, protected draft access, accessibility, horizontal overflow, and the canonical URL and structured data rendered on each public page.
+Unit tests cover content validation, event dates, the structured-data graph, and the migration's owner checks, RLS, publication, stale-version rejection, and upload policies in PGlite. Browser tests cover desktop/mobile navigation, security headers and Content Security Policy violations, the Google reviews link, gallery behavior, the events page, local editing and previews, protected draft access, accessibility, horizontal overflow, and the canonical URL and structured data rendered on each public page.

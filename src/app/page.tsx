@@ -5,6 +5,9 @@ import { getContent } from "@/lib/content";
 import { siteDescription, structuredData } from "@/lib/seo";
 import { homeTitle } from "@/lib/site";
 
+// Re-render hourly so the upcoming events drop off after their last day.
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const { hero } = await getContent();
   return {

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { contentSchema } from "../src/lib/content-schema";
 import { defaultContent } from "../src/lib/default-content";
 import { formatAddress } from "../src/lib/format";
-import { structuredData } from "../src/lib/seo";
+import { eventNodes, structuredData } from "../src/lib/seo";
 
 type Node = Record<string, unknown>;
 function graph(content = defaultContent, path = "/", breadcrumb?: string) {
@@ -68,6 +68,27 @@ describe("structured data", () => {
       defaultContent.amenities.length,
     );
     expect(business.knowsLanguage).toContain("Russian");
+  });
+
+  it("lists events at the campground, which hosts and organizes them", () => {
+    const [event] = eventNodes([
+      {
+        title: "Fall fest",
+        startDate: "2027-10-02",
+        endDate: "",
+        time: "Noon",
+        description: "",
+      },
+    ]);
+    expect(event).toMatchObject({
+      "@type": "Event",
+      name: "Fall fest",
+      startDate: "2027-10-02",
+      endDate: "2027-10-02",
+      location: { "@id": node("Campground")["@id"] },
+      organizer: { "@id": node("Campground")["@id"] },
+    });
+    expect(event).not.toHaveProperty("description");
   });
 
   it("uses absolute URLs and one identity across every page", () => {

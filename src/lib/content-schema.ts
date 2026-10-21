@@ -62,6 +62,15 @@ export const rateSchema = z.object({
   unit: z.string().trim().max(80),
   note: z.string().trim().max(400),
 });
+const eventDate = z.iso.date("Choose a date for each event.");
+export const eventSchema = z.object({
+  title: text(120),
+  startDate: eventDate,
+  // Blank for a one-day event.
+  endDate: z.union([z.literal(""), eventDate]),
+  time: z.string().trim().max(80),
+  description: z.string().trim().max(1000),
+});
 export const contentSchema = z
   .object({
     hero: z.object({
@@ -113,6 +122,8 @@ export const contentSchema = z
       .min(1)
       .max(15),
     rules: z.array(z.object({ title: text(150), body: text(3000) })).max(30),
+    // Content published before events existed has no list; read it as empty.
+    events: z.array(eventSchema).max(40).default([]),
     parkRulesComplete: z.boolean(),
     contact: z.object({
       phone: z
@@ -160,6 +171,14 @@ export const contentSchema = z
         message:
           "Enter both map coordinates, or leave both blank to use the street address alone.",
       });
+    for (const [index, event] of data.events.entries()) {
+      if (event.endDate && event.endDate < event.startDate)
+        ctx.addIssue({
+          code: "custom",
+          path: ["events", index, "endDate"],
+          message: "The end date can't be before the start date.",
+        });
+    }
     for (const [index, stay] of data.stays.entries()) {
       if (!ids.includes(stay.rateId))
         ctx.addIssue({
@@ -172,6 +191,7 @@ export const contentSchema = z
 export type SiteContent = z.infer<typeof contentSchema>;
 export type AmenityIcon = (typeof amenityIcons)[number];
 export type Rate = z.infer<typeof rateSchema>;
+export type SiteEvent = z.infer<typeof eventSchema>;
 /** A stored row is either saved content or an empty install still on the bundled copy. */
 export function parseStoredContent(stored: unknown): SiteContent {
   return stored ? contentSchema.parse(stored) : defaultContent;
@@ -187,6 +207,7 @@ export function validationMessage(error: z.ZodError, content?: SiteContent) {
     reviews: "Guest reviews",
     rateGroups: "Rates",
     rules: "Park rules",
+    events: "Events",
     contact: "Contact details",
   };
   return error.issues
@@ -205,6 +226,8 @@ export function validationMessage(error: z.ZodError, content?: SiteContent) {
             : undefined;
         return `${rate?.name || group?.title || "Rates"}: ${issue.message}`;
       }
+      if (section === "events" && typeof issue.path[1] === "number" && content)
+        return `${content.events[issue.path[1]]?.title || "Events"}: ${issue.message}`;
       return `${names[section] || "Content"}: ${issue.message}`;
     })
     .join(" ");
