@@ -94,8 +94,8 @@ export const defaultContent: SiteContent = {
     },
     {
       id: "shower",
-      name: "Showers",
-      detail: "Coin-operated showers on site.",
+      name: "Showers & laundry",
+      detail: "Coin-operated showers, plus laundry on site.",
       icon: "shower",
     },
     {
