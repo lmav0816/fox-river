@@ -1,4 +1,5 @@
 import type { Rate, SiteContent } from "./content-schema";
+import { siteName } from "./site";
 type Address = SiteContent["contact"]["address"];
 // Built once: constructing an Intl formatter costs far more than formatting with it.
 const wholeDollars = new Intl.NumberFormat("en-US", {
@@ -26,6 +27,18 @@ export function mapsHref(address: Address) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     formatAddress(address),
   )}`;
+}
+/**
+ * The owner's Business Profile share link when set. Otherwise a Maps search for
+ * the business name and address, which opens the same listing and its reviews.
+ */
+export function googleReviewsHref(contact: SiteContent["contact"]) {
+  return (
+    contact.googleProfileUrl ||
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${siteName}, ${formatAddress(contact.address)}`,
+    )}`
+  );
 }
 export function formatPrice(amount: number | null) {
   if (amount === null) return "Please call";

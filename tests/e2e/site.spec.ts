@@ -26,6 +26,9 @@ test("homepage loads photos, accurate contact links, and navigation without brow
     page.locator('a[href="mailto:foxriver13@gmail.com"]'),
   ).toBeVisible();
   await expect(page.locator("body")).not.toContainText("\\n");
+  await expect(
+    page.getByRole("link", { name: "Read our reviews on Google" }),
+  ).toHaveAttribute("href", /^https:\/\/www\.google\.com\/maps\//);
   await expect
     .poll(() =>
       page

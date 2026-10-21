@@ -32,6 +32,7 @@ import {
   formatAddress,
   formatPrice,
   mapsHref,
+  googleReviewsHref,
   phoneHref,
   rateIndex,
   stayHref,
@@ -250,6 +251,16 @@ export function HomePage({ content: c }: { content: SiteContent }) {
                   </footer>
                 </blockquote>
               ))}
+            </div>
+            <div className="mt-12 text-center">
+              <a
+                href={googleReviewsHref(c.contact)}
+                target="_blank"
+                rel="noreferrer"
+                className="text-link"
+              >
+                Read our reviews on Google <ArrowUpRight />
+              </a>
             </div>
           </div>
         </section>
