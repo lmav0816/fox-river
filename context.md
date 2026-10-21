@@ -56,9 +56,9 @@ If the business ever sends mail from the domain (for example through Google Work
 
 - `SITE_INDEXABLE` now applies to Production only.
 
-### Supabase (in the repository, not yet applied)
+### Supabase
 
-- `supabase/migrations/202610200001_revoke_anon_function_access.sql` revokes `anon` execute on `save_site_draft` and `publish_site_draft`, and revokes execute on `rls_auto_enable()` from `public`, `anon`, and `authenticated` when that function exists.
+- `supabase/migrations/202610200001_revoke_anon_function_access.sql` revokes `anon` execute on `save_site_draft` and `publish_site_draft`, and revokes execute on `rls_auto_enable()` from `public`, `anon`, and `authenticated` when that function exists. It has been applied to the live project.
 - `tests/database.test.ts` now mirrors Supabase's default function grants to `anon` and `authenticated`, runs every migration in order, and asserts that anonymous calls to both functions fail with a permission error. The test fails without the new migration and passes with it.
 
 ### Google Search Console
@@ -84,10 +84,8 @@ Deliberately left alone: hours, opening date, tent sites, accessibility, parking
 
 ## Still open
 
-1. Apply the Supabase migration: paste `supabase/migrations/202610200001_revoke_anon_function_access.sql` into the Supabase SQL editor and run it. The browser automation was blocked from running it.
-2. Turn on DNSSEC after the domain transfer completes. Steps are in [TODO.md](TODO.md).
-3. Make the business address match across listings. Details are in [TODO.md](TODO.md).
-4. Confirm that every account in `site_owners` should be able to publish the site.
-5. Confirm real office hours and season dates with the owners, then set the off-season as closed on the Business Profile.
-6. Turn on two-factor authentication for Cloudflare, Vercel, and Supabase when ready.
-7. Commit the migration and test change after review.
+1. Turn on DNSSEC after the domain transfer completes. Steps are in [TODO.md](TODO.md).
+2. Make the business address match across listings. Details are in [TODO.md](TODO.md).
+3. Confirm that every account in `site_owners` should be able to publish the site.
+4. Confirm real office hours and season dates with the owners, then set the off-season as closed on the Business Profile.
+5. Turn on two-factor authentication for Cloudflare, Vercel, and Supabase when ready.
