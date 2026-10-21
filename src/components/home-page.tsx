@@ -225,8 +225,12 @@ export function HomePage({ content: c }: { content: SiteContent }) {
             <div>
               <h2 className="display section-title">This is the good part.</h2>
             </div>
+            <Link href="/gallery" className="text-link">
+              See the full gallery <ArrowUpRight />
+            </Link>
           </div>
-          <Gallery images={c.gallery} />
+          {/* The first eight fill the staggered grid; the rest live on /gallery. */}
+          <Gallery images={c.gallery.slice(0, 8)} />
         </section>
         <section className="section-pad border-y border-border bg-[#e8eef6]">
           <div className="container-wide">

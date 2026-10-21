@@ -33,7 +33,7 @@ The editor has seven tabs: **Homepage**, **Rates**, **Photos**, **Amenities**, *
 
 1. **Edit.** Change any text, price, or photo. A red dot and **Unsaved changes** show that you have edits that aren't saved yet.
 2. **Save draft.** Click **Save draft**. Your changes are stored privately, and visitors still see the old version. You can close the browser and come back later.
-3. **Preview.** Click **Preview** to see the homepage and the rates and rules pages exactly as visitors will. Click **Back to editing** to return.
+3. **Preview.** Click **Preview** to see the homepage and the rates, gallery, and rules pages exactly as visitors will. Click **Back to editing** to return.
 4. **Publish.** Click **Publish changes**, then confirm. Visitors see the new version right away. Refresh the public site to check it.
 
 **Publish changes** stays greyed out until your latest edits are saved. Save first, then publish.
@@ -57,7 +57,7 @@ You can't add or remove rate lines in the editor. To add a new kind of rate, con
 
 ## 4. Add, swap, or remove photos
 
-Open the **Photos** tab. It has four areas: **Homepage hero** (the large photo at the top of the homepage), **Stay photos** (RV, cabins, seasonal), **River photo**, and **Photo gallery**.
+Open the **Photos** tab. It has four areas: **Homepage hero** (the large photo at the top of the homepage), **Stay photos** (RV, cabins, seasonal), **River photo**, and **Photo gallery**. Every gallery photo appears on the Gallery page, and the first eight also appear on the homepage.
 
 **Before you upload**
 
@@ -79,7 +79,7 @@ Open the **Photos** tab. It has four areas: **Homepage hero** (the large photo a
 
 **Reorder or remove gallery photos**
 
-- **Move earlier** moves a photo one spot toward the start of the gallery. The first photos are the ones most visitors see.
+- **Move earlier** moves a photo one spot toward the start of the gallery. The first eight are the ones on the homepage, so put your best photos there.
 - **Remove from gallery** takes a photo off the website. The gallery must keep at least one photo.
 
 ## 5. Change the drone video

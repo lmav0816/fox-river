@@ -16,7 +16,7 @@ const links = [
   { label: "Stay with us", href: "/#stay" },
   { label: "Explore the park", href: "/#amenities" },
   { label: "Rates", href: "/rates" },
-  { label: "Gallery", href: "/#gallery" },
+  { label: "Gallery", href: "/gallery" },
 ];
 export function SiteHeader({ phone }: { phone: string }) {
   const [open, setOpen] = useState(false);
