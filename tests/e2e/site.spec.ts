@@ -15,6 +15,10 @@ test("homepage loads photos, accurate contact links, and navigation without brow
 }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.text().includes("Content Security Policy"))
+      errors.push(message.text());
+  });
   await page.goto("/");
   await expect(
     page.getByRole("heading", { name: "A little closer to nature." }),
@@ -105,6 +109,11 @@ test("mobile menu navigates and closes", async ({ page }, testInfo) => {
 test("local editor saves, previews, and restores a draft without changing public content", async ({
   page,
 }) => {
+  const violations: string[] = [];
+  page.on("console", (message) => {
+    if (message.text().includes("Content Security Policy"))
+      violations.push(message.text());
+  });
   await page.goto("/admin/demo");
   await page
     .getByLabel("Main headline", { exact: true })
@@ -136,6 +145,7 @@ test("local editor saves, previews, and restores a draft without changing public
     page.getByRole("heading", { name: "A little closer to nature." }),
   ).toBeVisible();
   await expect(page.locator(".stay-price").first()).toContainText("$60");
+  expect(violations).toEqual([]);
 });
 
 test("invalid rates cannot be saved and unauthenticated draft previews are protected", async ({
@@ -162,6 +172,22 @@ for (const path of ["/", "/rates", "/rules", "/admin", "/admin/demo"]) {
     await expectNoHorizontalOverflow(page);
   });
 }
+
+test("every response carries the security headers", async ({ request }) => {
+  const response = await request.get("/");
+  const headers = response.headers();
+  expect(headers["content-security-policy"]).toContain(
+    "frame-ancestors 'none'",
+  );
+  expect(headers["content-security-policy"]).toContain("object-src 'none'");
+  expect(headers["strict-transport-security"]).toContain("max-age=");
+  expect(headers["cross-origin-opener-policy"]).toBe("same-origin");
+  expect(headers["cross-origin-resource-policy"]).toBe("same-origin");
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+  expect(headers["x-frame-options"]).toBe("DENY");
+  expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+  expect(headers["permissions-policy"]).toContain("camera=()");
+});
 
 test("every public page ships a canonical URL and a linked structured-data graph", async ({
   page,
