@@ -16,6 +16,7 @@ export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
           </div>
           <nav className="footer-links" aria-label="Footer navigation">
             <Link href="/rates">Rates</Link>
+            <Link href="/gallery">Gallery</Link>
             <Link href="/rules">Park rules</Link>
             <Link href="/#visit">Find us</Link>
             <a

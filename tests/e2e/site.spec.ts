@@ -66,6 +66,13 @@ test("gallery opens, changes photos, and closes with Escape", async ({
   page,
 }) => {
   await page.goto("/");
+  await expect(page.getByRole("button", { name: /View photo:/ })).toHaveCount(
+    8,
+  );
+  await page.getByRole("link", { name: "See the full gallery" }).click();
+  await expect(
+    page.getByRole("heading", { name: "This is the good part.", level: 1 }),
+  ).toBeVisible();
   const photos = page.getByRole("button", { name: /View photo:/ });
   const count = await photos.count();
   await photos.first().click();
@@ -167,6 +174,7 @@ test("invalid rates cannot be saved and unauthenticated draft previews are prote
 for (const path of [
   "/",
   "/rates",
+  "/gallery",
   "/rules",
   "/privacy",
   "/terms",
@@ -205,6 +213,7 @@ test("every public page ships a canonical URL and a linked structured-data graph
   for (const [path, expectedCrumbs] of [
     ["/", 0],
     ["/rates", 2],
+    ["/gallery", 2],
     ["/rules", 2],
   ] as const) {
     await page.goto(path);

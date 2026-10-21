@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 const previewLinks = [
   { slug: "home", label: "Home" },
   { slug: "rates", label: "Rates" },
+  { slug: "gallery", label: "Gallery" },
   { slug: "rules", label: "Rules" },
 ] as const;
 export default async function PreviewPage({
