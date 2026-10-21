@@ -19,7 +19,7 @@ Developer setup, deployment, and technical notes are in [DEVELOPMENT.md](DEVELOP
 
 ## 1. Sign in
 
-1. Go to **https://foxriverrecreation.com/admin**. There is also an **Owner sign-in** link at the bottom of every page.
+1. Go to **https://foxriverrecreation.com/admin**. The website doesn't link to this page, so bookmark it.
 2. Click **Continue with Google** and choose your Google account.
 3. The editor opens with the heading **Welcome back.**
 

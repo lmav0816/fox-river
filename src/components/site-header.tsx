@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, Menu, Phone } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,8 +13,6 @@ import { phoneHref } from "@/lib/format";
 import { Brand } from "./brand";
 
 const links = [
-  { label: "Stay with us", href: "/#stay" },
-  { label: "Explore the park", href: "/#amenities" },
   { label: "Rates", href: "/rates" },
   { label: "Gallery", href: "/gallery" },
   { label: "Events", href: "/events" },
@@ -38,7 +36,8 @@ export function SiteHeader({ phone }: { phone: string }) {
             </Link>
           ))}
           <a className="nav-call" href={phoneHref(phone)}>
-            Plan your stay <ArrowUpRight size={15} />
+            <Phone size={15} />
+            Call us
           </a>
         </nav>
         <div className="mobile-nav">
@@ -60,7 +59,6 @@ export function SiteHeader({ phone }: { phone: string }) {
                 {[
                   ...links,
                   { label: "Rules & visiting", href: "/rules" },
-                  { label: "Find us", href: "/#visit" },
                 ].map((link) => (
                   <Link
                     key={link.href}
