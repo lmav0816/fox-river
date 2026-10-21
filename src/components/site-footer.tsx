@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Brand } from "./brand";
-import { formatAddress } from "@/lib/format";
+import { formatAddress, googleReviewsHref } from "@/lib/format";
 import { siteName } from "@/lib/site";
 import type { SiteContent } from "@/lib/content-schema";
 export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
@@ -18,6 +18,13 @@ export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
             <Link href="/rates">Rates</Link>
             <Link href="/rules">Park rules</Link>
             <Link href="/#visit">Find us</Link>
+            <a
+              href={googleReviewsHref(contact)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Google reviews ↗
+            </a>
             {contact.facebookUrl && (
               <a href={contact.facebookUrl} target="_blank" rel="noreferrer">
                 Facebook ↗
