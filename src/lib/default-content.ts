@@ -527,6 +527,8 @@ export const defaultContent: SiteContent = {
     },
   ],
   parkRulesComplete: false,
+  // Owners post confirmed events in the editor; none are advertised by default.
+  events: [],
   contact: {
     phone: "847-395-6090",
     email: "foxriver13@gmail.com",

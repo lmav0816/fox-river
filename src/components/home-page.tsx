@@ -39,6 +39,7 @@ import {
   stayHref,
   stayLabel,
 } from "@/lib/format";
+import { formatEventDates, upcomingEvents } from "@/lib/events";
 import type { AmenityIcon, SiteContent } from "@/lib/content-schema";
 // Typed by the schema's icon enum, so adding a name there fails the build here.
 const icons: Record<AmenityIcon, LucideIcon> = {
@@ -60,6 +61,7 @@ export function HomePage({ content: c }: { content: SiteContent }) {
   const highlightRates = c.stays
     .map((stay) => rates.get(stay.rateId))
     .filter((rate) => rate !== undefined);
+  const nextEvents = upcomingEvents(c.events).slice(0, 3);
   return (
     <>
       <SiteHeader phone={c.contact.phone} />
@@ -272,30 +274,41 @@ export function HomePage({ content: c }: { content: SiteContent }) {
             </div>
           </div>
         </section>
-        {c.contact.facebookUrl && (
-          <section
-            id="happenings"
-            className="container-wide flex flex-wrap items-center justify-between gap-6 border-b py-12"
-          >
+        <section id="happenings" className="container-wide border-b py-12">
+          <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
               <h2 className="display text-3xl">
                 There&apos;s always a reason to get together.
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Find the latest park announcements and event updates on our
-                Facebook page.
+                {nextEvents.length > 0
+                  ? "Coming up at the campground."
+                  : "Seasonal events and park announcements are posted on our events page."}
               </p>
             </div>
-            <a
-              href={c.contact.facebookUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-link"
-            >
+            <Link href="/events" className="text-link">
               See what&apos;s happening <ArrowUpRight />
-            </a>
-          </section>
-        )}
+            </Link>
+          </div>
+          {nextEvents.length > 0 && (
+            <ul className="mt-8 grid gap-5 sm:grid-cols-3">
+              {nextEvents.map((event, index) => (
+                <li
+                  key={`${event.startDate}-${event.title}-${index}`}
+                  className="grid content-start gap-3 border-t pt-5"
+                >
+                  <Tag>{formatEventDates(event)}</Tag>
+                  <h3 className="font-medium">{event.title}</h3>
+                  {event.time && (
+                    <p className="text-xs text-muted-foreground">
+                      {event.time}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
         <section id="visit" className="section-pad container-wide visit-grid">
           <div>
             <h2 className="display section-title">

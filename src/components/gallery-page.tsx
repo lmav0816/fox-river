@@ -24,6 +24,9 @@ export function GalleryPage({ content: c }: { content: SiteContent }) {
           <Link href="/rates" className="text-link">
             Find your stay <ArrowUpRight />
           </Link>
+          <Link href="/events" className="text-link">
+            See what&apos;s happening <ArrowUpRight />
+          </Link>
         </div>
       </main>
       <SiteFooter contact={c.contact} />

@@ -1,4 +1,4 @@
-import type { SiteContent } from "./content-schema";
+import type { SiteContent, SiteEvent } from "./content-schema";
 import { allRates, mapsHref, phoneE164 } from "./format";
 import { absoluteUrl, siteName, siteUrl } from "./site";
 
@@ -83,11 +83,31 @@ export type PageDetails = {
   breadcrumb?: string;
 };
 
+/** Events held at the campground, which is both their venue and organizer. */
+export function eventNodes(events: SiteEvent[]) {
+  return events.map((event) => ({
+    "@type": "Event",
+    name: event.title,
+    startDate: event.startDate,
+    endDate: event.endDate || event.startDate,
+    ...(event.description ? { description: event.description } : {}),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: { "@id": businessId },
+    organizer: { "@id": businessId },
+    url: absoluteUrl("/events"),
+  }));
+}
+
 /**
  * One linked graph per page: the campground itself, the site it belongs to,
- * this page, and the trail back to the homepage.
+ * this page, the trail back to the homepage, and any page-specific nodes.
  */
-export function structuredData(content: SiteContent, page: PageDetails) {
+export function structuredData(
+  content: SiteContent,
+  page: PageDetails,
+  extra: Record<string, unknown>[] = [],
+) {
   const url = absoluteUrl(page.path);
   const webPage: Record<string, unknown> = {
     "@type": "WebPage",
@@ -124,5 +144,5 @@ export function structuredData(content: SiteContent, page: PageDetails) {
       ],
     });
   }
-  return { "@context": "https://schema.org", "@graph": graph };
+  return { "@context": "https://schema.org", "@graph": [...graph, ...extra] };
 }

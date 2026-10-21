@@ -100,6 +100,23 @@ test("rates and rules preserve fees, policies, and mobile layout", async ({
   await expect(page.locator("main")).toContainText("Complete campground rules");
 });
 
+test("events page lists only upcoming events and says so when there are none", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .locator("#happenings")
+    .getByRole("link", { name: "See what's happening" })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "What's happening." }),
+  ).toBeVisible();
+  await expect(page.locator("main")).toContainText(
+    "No events are posted right now.",
+  );
+  await expectNoHorizontalOverflow(page);
+});
+
 test("mobile menu navigates and closes", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile");
   await page.goto("/");
@@ -129,6 +146,13 @@ test("local editor saves, previews, and restores a draft without changing public
     .fill("A weekend by the water.");
   await page.getByRole("tab", { name: "Rates", exact: true }).click();
   await page.getByLabel("Price in dollars", { exact: true }).first().fill("75");
+  await page.getByRole("tab", { name: "Events", exact: true }).click();
+  await page.getByRole("button", { name: "Add an event" }).click();
+  await page
+    .getByLabel("Event name", { exact: true })
+    .fill("Fall fest potluck");
+  await page.getByLabel("Date", { exact: true }).fill("2099-10-02");
+  await page.getByLabel("Time", { exact: true }).fill("Noon to 4 pm");
   await page.getByRole("button", { name: "Save draft", exact: true }).click();
   await expect(page.getByRole("status")).toContainText(
     "Draft saved in this browser",
@@ -143,6 +167,12 @@ test("local editor saves, previews, and restores a draft without changing public
   await expect(page.locator(".stay-price").first()).toContainText("$75");
   await page.getByRole("button", { name: "rates", exact: true }).click();
   await expect(page.locator("#camping")).toContainText("$75");
+  await page.getByRole("button", { name: "events", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Fall fest potluck" }),
+  ).toBeVisible();
+  await expect(page.locator("main")).toContainText("Fri, October 2");
+  await expect(page.locator("main")).toContainText("Noon to 4 pm");
   await page.getByRole("button", { name: "Back to editing" }).click();
   await page.reload();
   await page.getByRole("button", { name: "Restore saved local draft" }).click();
@@ -154,6 +184,8 @@ test("local editor saves, previews, and restores a draft without changing public
     page.getByRole("heading", { name: "A little closer to nature." }),
   ).toBeVisible();
   await expect(page.locator(".stay-price").first()).toContainText("$60");
+  await page.goto("/events");
+  await expect(page.locator("main")).not.toContainText("Fall fest potluck");
   expect(violations).toEqual([]);
 });
 
@@ -175,6 +207,7 @@ for (const path of [
   "/",
   "/rates",
   "/gallery",
+  "/events",
   "/rules",
   "/privacy",
   "/terms",
@@ -214,6 +247,7 @@ test("every public page ships a canonical URL and a linked structured-data graph
     ["/", 0],
     ["/rates", 2],
     ["/gallery", 2],
+    ["/events", 2],
     ["/rules", 2],
   ] as const) {
     await page.goto(path);

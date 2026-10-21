@@ -1,6 +1,10 @@
 import { phoneHref, findRate, formatPrice } from "../src/lib/format";
 import { describe, expect, it } from "vitest";
-import { contentSchema, mediaPath } from "../src/lib/content-schema";
+import {
+  contentSchema,
+  mediaPath,
+  validationMessage,
+} from "../src/lib/content-schema";
 import { defaultContent } from "../src/lib/default-content";
 describe("content validation", () => {
   it("accepts all migrated content, including free services and call-for-price rates", () => {
@@ -41,6 +45,34 @@ describe("content validation", () => {
       "https://fox-river-test.supabase.co/storage/v1/object/public/site-media/x?token=secret",
     ])
       expect(mediaPath.safeParse(path).success).toBe(false);
+  });
+  it("reads content published before events existed as having none", () => {
+    const { events, ...published } = structuredClone(defaultContent);
+    expect(events).toEqual([]);
+    expect(contentSchema.parse(published).events).toEqual([]);
+  });
+  it("rejects events without a real date or ending before they start", () => {
+    const content = structuredClone(defaultContent);
+    content.events = [
+      {
+        title: "Fourth of July potluck",
+        startDate: "2027-07-04",
+        endDate: "",
+        time: "",
+        description: "",
+      },
+    ];
+    expect(contentSchema.safeParse(content).success).toBe(true);
+    content.events[0].startDate = "";
+    expect(contentSchema.safeParse(content).success).toBe(false);
+    content.events[0].startDate = "2027-07-04";
+    content.events[0].endDate = "2027-07-03";
+    const result = contentSchema.safeParse(content);
+    expect(result.success).toBe(false);
+    if (!result.success)
+      expect(validationMessage(result.error, content)).toBe(
+        "Fourth of July potluck: The end date can't be before the start date.",
+      );
   });
   it("keeps phone and email valid and creates matching call links", () => {
     expect(phoneHref(defaultContent.contact.phone)).toBe("tel:+18473956090");

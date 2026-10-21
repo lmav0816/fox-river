@@ -1,6 +1,6 @@
 # Fox River Recreation: Owner's Guide
 
-This guide shows how to update foxriverrecreation.com yourself. You don't need to write code or call a developer for routine changes such as rates, photos, the drone video, rules, or contact details.
+This guide shows how to update foxriverrecreation.com yourself. You don't need to write code or call a developer for routine changes such as rates, photos, events, the drone video, rules, or contact details.
 
 Developer setup, deployment, and technical notes are in [DEVELOPMENT.md](DEVELOPMENT.md).
 
@@ -29,11 +29,11 @@ When you're done, click **Sign out** at the top of the editor.
 
 ## 2. How editing works: save, preview, publish
 
-The editor has seven tabs: **Homepage**, **Rates**, **Photos**, **Amenities**, **Reviews**, **Rules**, and **Contact**. Each change goes through three steps.
+The editor has eight tabs: **Homepage**, **Rates**, **Photos**, **Events**, **Amenities**, **Reviews**, **Rules**, and **Contact**. Each change goes through three steps.
 
 1. **Edit.** Change any text, price, or photo. A red dot and **Unsaved changes** show that you have edits that aren't saved yet.
 2. **Save draft.** Click **Save draft**. Your changes are stored privately, and visitors still see the old version. You can close the browser and come back later.
-3. **Preview.** Click **Preview** to see the homepage and the rates, gallery, and rules pages exactly as visitors will. Click **Back to editing** to return.
+3. **Preview.** Click **Preview** to see the homepage and the rates, gallery, events, and rules pages exactly as visitors will. Click **Back to editing** to return.
 4. **Publish.** Click **Publish changes**, then confirm. Visitors see the new version right away. Refresh the public site to check it.
 
 **Publish changes** stays greyed out until your latest edits are saved. Save first, then publish.
@@ -95,9 +95,30 @@ The drone video plays silently behind the headline at the top of the homepage. T
 
 ## 6. Post events
 
-The homepage has a "There's always a reason to get together" section that sends visitors to the Fox River Recreation Facebook page for events and announcements. To announce an event, post it on Facebook. You don't need to change the website.
+Events appear on the **Events** page, and the next three also appear on the homepage under "There's always a reason to get together."
 
-The park rules also tell guests to ask at the store about special activities and events. You can change that wording in the **Rules** tab.
+**Add an event**
+
+1. Open the **Events** tab and click **Add an event**.
+2. Fill in:
+   - **Event name**, for example "Fourth of July cookout".
+   - **Date**, the day the event starts.
+   - **End date**, only for events that last more than one day. Leave it blank for a one-day event.
+   - **Time**, optional, for example "10 am to 2 pm".
+   - **Event details**, optional: what to expect, what to bring, or who to ask.
+3. Save, preview, and publish.
+
+Events show up in date order no matter what order you add them in.
+
+**Change or remove an event**
+
+Edit any field, or click **Remove event**, then save and publish.
+
+**Old events**
+
+Each event hides itself from the website the day after it ends, so you don't have to remove it on time. Remove old events whenever it's convenient, or edit an old one to reuse it for next season. The editor holds up to 40 events.
+
+If no events are coming up, the Events page tells visitors to check back soon or call the office. Last-minute changes, like a rain delay, are still quickest to share on Facebook. The Events page links to your Facebook page when the link is filled in on the **Contact** tab.
 
 ## 7. Edit amenities, reviews, and park rules
 

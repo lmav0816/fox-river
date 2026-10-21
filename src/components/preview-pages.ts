@@ -1,3 +1,4 @@
+import { EventsPage } from "./events-page";
 import { GalleryPage } from "./gallery-page";
 import { HomePage } from "./home-page";
 import { RatesPage } from "./rates-page";
@@ -8,6 +9,7 @@ export const previewPages = {
   home: HomePage,
   rates: RatesPage,
   gallery: GalleryPage,
+  events: EventsPage,
   rules: RulesPage,
 };
 export type PreviewPage = keyof typeof previewPages;

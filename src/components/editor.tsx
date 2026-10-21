@@ -31,6 +31,7 @@ import {
   type SiteContent,
 } from "@/lib/content-schema";
 import { stayLabel } from "@/lib/format";
+import { todayAtPark } from "@/lib/events";
 import { createClient } from "@/lib/supabase/browser";
 import { saveDraft, publishDraft, signOut } from "@/app/admin/actions";
 
@@ -471,6 +472,7 @@ export function Editor({
                 "homepage",
                 "rates",
                 "photos",
+                "events",
                 "amenities",
                 "reviews",
                 "rules",
@@ -827,6 +829,102 @@ export function Editor({
                   </div>
                 )}
               </section>
+            </TabsContent>
+            <TabsContent value="events" className="space-y-6">
+              <p className="text-sm text-muted-foreground">
+                Events appear on the Events page, and the next three appear on
+                the homepage. Each event hides itself the day after it ends, so
+                old events can stay here or be removed.
+              </p>
+              {content.events.map((event, i) => (
+                <section className="admin-panel" key={i}>
+                  <div className="grid gap-5">
+                    <Field
+                      label="Event name"
+                      value={event.title}
+                      onChange={(value) =>
+                        update((c) => {
+                          c.events[i].title = value;
+                        })
+                      }
+                    />
+                    <div className="grid items-start gap-5 sm:grid-cols-3">
+                      <Field
+                        label="Date"
+                        type="date"
+                        value={event.startDate}
+                        onChange={(value) =>
+                          update((c) => {
+                            c.events[i].startDate = value;
+                          })
+                        }
+                      />
+                      <Field
+                        label="End date"
+                        type="date"
+                        value={event.endDate}
+                        onChange={(value) =>
+                          update((c) => {
+                            c.events[i].endDate = value;
+                          })
+                        }
+                        hint="Leave blank for a one-day event."
+                      />
+                      <Field
+                        label="Time"
+                        value={event.time}
+                        onChange={(value) =>
+                          update((c) => {
+                            c.events[i].time = value;
+                          })
+                        }
+                        hint="Optional, for example “10 am to 2 pm”."
+                      />
+                    </div>
+                    <Field
+                      label="Event details"
+                      multiline
+                      value={event.description}
+                      onChange={(value) =>
+                        update((c) => {
+                          c.events[i].description = value;
+                        })
+                      }
+                      hint="Optional. What to expect, what to bring, or who to ask."
+                    />
+                    <Button
+                      variant="ghost"
+                      className="justify-self-start"
+                      onClick={() =>
+                        update((c) => {
+                          c.events.splice(i, 1);
+                        })
+                      }
+                    >
+                      <Trash2 size={14} />
+                      Remove event
+                    </Button>
+                  </div>
+                </section>
+              ))}
+              <Button
+                variant="outline"
+                disabled={content.events.length >= 40}
+                onClick={() =>
+                  update((c) => {
+                    c.events.push({
+                      title: "New event",
+                      startDate: todayAtPark(),
+                      endDate: "",
+                      time: "",
+                      description: "",
+                    });
+                  })
+                }
+              >
+                <Plus size={15} />
+                Add an event
+              </Button>
             </TabsContent>
             <TabsContent value="amenities" className="space-y-6">
               {content.amenities.map((amenity, i) => (
