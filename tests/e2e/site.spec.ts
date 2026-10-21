@@ -59,14 +59,13 @@ test("gallery opens, changes photos, and closes with Escape", async ({
   page,
 }) => {
   await page.goto("/");
-  await page
-    .getByRole("button", { name: /View photo:/ })
-    .first()
-    .click();
+  const photos = page.getByRole("button", { name: /View photo:/ });
+  const count = await photos.count();
+  await photos.first().click();
   await expect(page.getByRole("dialog")).toBeVisible();
-  await expect(page.getByText("1 of 4", { exact: true })).toBeVisible();
+  await expect(page.getByText(`1 of ${count}`, { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next photo" }).click();
-  await expect(page.getByText("2 of 4", { exact: true })).toBeVisible();
+  await expect(page.getByText(`2 of ${count}`, { exact: true })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).not.toBeVisible();
 });
