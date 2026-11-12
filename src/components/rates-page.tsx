@@ -8,7 +8,7 @@ import { formatPrice, phoneHref } from "@/lib/format";
 export function RatesPage({ content: c }: { content: SiteContent }) {
   return (
     <>
-      <SiteHeader phone={c.contact.phone} />
+      <SiteHeader contact={c.contact} />
       <main id="main" className="container-wide">
         <div className="page-intro">
           <p className="eyebrow">

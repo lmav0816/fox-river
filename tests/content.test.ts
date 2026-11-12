@@ -51,6 +51,17 @@ describe("content validation", () => {
     expect(events).toEqual([]);
     expect(contentSchema.parse(published).events).toEqual([]);
   });
+  it("reads content published before the river video existed as the bundled clip", () => {
+    const published = structuredClone(defaultContent);
+    const { video, ...river } = published.river;
+    expect(video).toBe("/images/river-cruise.mp4");
+    Object.assign(published, { river });
+    expect(contentSchema.parse(published).river.video).toBe(
+      "/images/river-cruise.mp4",
+    );
+    published.river.video = "";
+    expect(contentSchema.parse(published).river.video).toBe("");
+  });
   it("rejects events without a real date or ending before they start", () => {
     const content = structuredClone(defaultContent);
     content.events = [

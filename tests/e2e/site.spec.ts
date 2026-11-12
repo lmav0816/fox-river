@@ -41,7 +41,8 @@ test("homepage loads photos, accurate contact links, and navigation without brow
     )
     .toBeGreaterThan(0);
   await expectNoHorizontalOverflow(page);
-  for (const image of await page.locator("main img").all()) {
+  // Map tiles come and go as Leaflet pans; the photos are what matter here.
+  for (const image of await page.locator("main img:not(.leaflet-tile)").all()) {
     await image.scrollIntoViewIfNeeded();
     await expect
       .poll(() =>

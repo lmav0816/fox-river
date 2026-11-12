@@ -27,6 +27,8 @@ import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { Hero } from "./hero";
 import { Gallery } from "./gallery";
+import { RiverMedia } from "./river-media";
+import { AreaMap } from "./area-map";
 import { Button } from "./ui/button";
 import { Tag } from "./ui/tag";
 import {
@@ -64,7 +66,7 @@ export function HomePage({ content: c }: { content: SiteContent }) {
   const nextEvents = upcomingEvents(c.events).slice(0, 3);
   return (
     <>
-      <SiteHeader phone={c.contact.phone} />
+      <SiteHeader contact={c.contact} />
       <main id="main">
         <Hero content={c.hero} />
         <section id="welcome" className="section-pad container-wide intro-grid">
@@ -156,15 +158,7 @@ export function HomePage({ content: c }: { content: SiteContent }) {
           </div>
         </section>
         <section className="river-section">
-          <div className="photo-wrap river-photo">
-            <Image
-              src={c.river.image.src}
-              alt={c.river.image.alt}
-              fill
-              sizes="(max-width: 800px) 100vw, 50vw"
-              className="photo"
-            />
-          </div>
+          <RiverMedia river={c.river} />
           <div className="river-copy">
             <h2 className="display section-title whitespace-pre-line">
               {c.river.title}
@@ -308,6 +302,19 @@ export function HomePage({ content: c }: { content: SiteContent }) {
               ))}
             </ul>
           )}
+        </section>
+        <section id="nearby" className="section-pad container-wide">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow mb-4">Around the area</p>
+              <h2 className="display section-title">
+                Away from it all.
+                <br />
+                Close to everything.
+              </h2>
+            </div>
+          </div>
+          <AreaMap />
         </section>
         <section id="visit" className="section-pad container-wide visit-grid">
           <div>

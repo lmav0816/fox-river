@@ -13,7 +13,7 @@ export default async function Page() {
   const { contact } = await getContent();
   return (
     <>
-      <SiteHeader phone={contact.phone} />
+      <SiteHeader contact={contact} />
       <main id="main" className="container-wide pb-20">
         <div className="page-intro">
           <p className="eyebrow">Fox River Recreation</p>

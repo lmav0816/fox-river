@@ -7,7 +7,7 @@ import { phoneHref } from "@/lib/format";
 export function RulesPage({ content: c }: { content: SiteContent }) {
   return (
     <>
-      <SiteHeader phone={c.contact.phone} />
+      <SiteHeader contact={c.contact} />
       <main id="main" className="container-wide pb-16">
         <div className="page-intro">
           <p className="eyebrow">Make yourself at home</p>

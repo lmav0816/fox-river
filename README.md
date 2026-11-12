@@ -75,7 +75,7 @@ Open the **Photos** tab. It has four areas: **Homepage hero** (the large photo a
 
 1. Scroll to the bottom of **Photo gallery** and click **Add a gallery photo**.
 2. Write a photo description for the new photo.
-3. The gallery holds up to 24 photos. Remove one to make room for more.
+3. The gallery holds up to 48 photos. Remove one to make room for more.
 
 **Reorder or remove gallery photos**
 
@@ -92,6 +92,8 @@ The drone video plays silently behind the headline at the top of the homepage. T
 4. The video plays without sound, so don't rely on audio.
 5. To stop showing a video, click **Use photo only**.
 6. Save, preview, and publish.
+
+The river section on the homepage has its own video, a boat ride past the park, under **River video** in the **River photo** area. It plays once visitors scroll down to it and works the same way: replace it, or click **Use photo only** to show just the river photo.
 
 ## 6. Post events
 

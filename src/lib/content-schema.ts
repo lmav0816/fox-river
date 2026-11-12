@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { defaultContent } from "./default-content";
+import { defaultContent, defaultRiverVideo } from "./default-content";
 
 const text = (max = 500) => z.string().trim().min(1).max(max);
 export const mediaPath = z
@@ -24,6 +24,7 @@ export const mediaPath = z
     }
   }, "Use a bundled image or upload a file to the site's media library.");
 const image = z.object({ src: mediaPath, alt: text(200) });
+export const galleryLimit = 48;
 // Search engines and the Google Business Profile both read these links.
 const profileUrl = z.union([
   z.literal(""),
@@ -93,7 +94,13 @@ export const contentSchema = z
       )
       .min(1)
       .max(6),
-    river: z.object({ title: text(150), body: text(1000), image }),
+    river: z.object({
+      title: text(150),
+      body: text(1000),
+      image,
+      // Content published before the river video existed reads as the bundled clip.
+      video: z.union([z.literal(""), mediaPath]).default(defaultRiverVideo),
+    }),
     amenities: z
       .array(
         z.object({
@@ -105,7 +112,7 @@ export const contentSchema = z
       )
       .min(1)
       .max(20),
-    gallery: z.array(image).min(1).max(24),
+    gallery: z.array(image).min(1).max(galleryLimit),
     reviews: z
       .array(z.object({ name: text(100), quote: text(1500) }))
       .min(1)

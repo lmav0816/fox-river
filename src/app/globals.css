@@ -370,6 +370,33 @@ p {
 .river-photo {
   min-height: 620px;
 }
+.river-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.river-video[data-playing="true"] {
+  opacity: 1;
+}
+.river-video-toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 3px;
+  background: rgb(10 30 55 / 0.6);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .river-copy {
   padding: 84px clamp(36px, 6vw, 100px);
   display: flex;
@@ -396,6 +423,100 @@ p {
 }
 .river-points svg {
   width: 15px;
+}
+.area-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 40px;
+  align-items: stretch;
+}
+.attraction-list {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+.attraction {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  padding: 16px 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: background 0.2s ease;
+}
+.attraction:hover,
+.attraction[data-active="true"] {
+  background: #e8eef6;
+}
+.attraction[data-active="true"] {
+  border-color: #b9cbe4;
+}
+.attraction:has(.attraction-name:focus-visible) {
+  outline: 2px solid #1a6fc4;
+  outline-offset: 2px;
+}
+.attraction-name {
+  display: block;
+  font-weight: 600;
+  text-align: left;
+  outline: none;
+}
+/* Stretches the button's hit area over the whole card. */
+.attraction-name::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+.attraction-number,
+.map-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #1a6fc4;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.map-pin {
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+}
+.map-pin-park {
+  width: 34px;
+  height: 34px;
+  background: #c1272d;
+  font-size: 15px;
+}
+.attraction-distance {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c1272d;
+}
+.attraction-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.area-map {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 520px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  z-index: 0;
 }
 .rates-preview {
   display: grid;
@@ -713,9 +834,30 @@ p {
     gap: 45px;
   }
 }
+/* Seven links plus the call button stop fitting beside the logo here. */
+@media (max-width: 1080px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+  }
+}
 @media (max-width: 800px) {
   .container-wide {
     width: calc(100% - 40px);
+  }
+  .area-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .area-map,
+  .attraction-list {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .area-map {
+    min-height: 380px;
   }
   .section-pad {
     padding-block: 68px;

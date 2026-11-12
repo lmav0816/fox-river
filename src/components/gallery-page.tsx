@@ -7,7 +7,7 @@ import { Gallery } from "./gallery";
 export function GalleryPage({ content: c }: { content: SiteContent }) {
   return (
     <>
-      <SiteHeader phone={c.contact.phone} />
+      <SiteHeader contact={c.contact} />
       <main id="main" className="container-wide pb-24">
         <div className="page-intro">
           <p className="eyebrow">Life by the river</p>

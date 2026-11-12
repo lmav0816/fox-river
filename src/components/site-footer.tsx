@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Brand } from "./brand";
-import { formatAddress, googleReviewsHref } from "@/lib/format";
+import { formatAddress } from "@/lib/format";
+import { siteLinks } from "@/lib/nav";
 import { siteName } from "@/lib/site";
 import type { SiteContent } from "@/lib/content-schema";
 export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
@@ -15,22 +16,21 @@ export function SiteFooter({ contact }: { contact: SiteContent["contact"] }) {
             </p>
           </div>
           <nav className="footer-links" aria-label="Footer navigation">
-            <Link href="/rates">Rates</Link>
-            <Link href="/gallery">Gallery</Link>
-            <Link href="/events">Events</Link>
-            <Link href="/rules">Park rules</Link>
-            <Link href="/#visit">Find us</Link>
-            <a
-              href={googleReviewsHref(contact)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Google reviews ↗
-            </a>
-            {contact.facebookUrl && (
-              <a href={contact.facebookUrl} target="_blank" rel="noreferrer">
-                Facebook ↗
-              </a>
+            {siteLinks(contact).map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label} ↗
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ),
             )}
           </nav>
         </div>

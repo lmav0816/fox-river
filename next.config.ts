@@ -14,7 +14,8 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' blob: data: ${supabaseOrigin}`,
+  // The area map draws OpenStreetMap tiles.
+  `img-src 'self' blob: data: https://tile.openstreetmap.org ${supabaseOrigin}`,
   `media-src 'self' blob: ${supabaseOrigin}`,
   `connect-src 'self' ${supabaseOrigin}`,
   "font-src 'self'",
