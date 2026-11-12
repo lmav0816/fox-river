@@ -36,10 +36,16 @@ export const attractions: Attraction[] = [
   {
     id: "state-park",
     name: "Chain O'Lakes State Park",
-    distance: "About 15 minutes by car",
+    distance: "Directly across the street",
     description:
-      "Hiking trails, fishing, and picnic spots in a state park where the Fox River meets three natural lakes.",
-    pins: [{ name: "Chain O'Lakes State Park", position: [42.4585, -88.1768] }],
+      "Hiking trails, fishing, and picnic spots in a state park where the Fox River meets three natural lakes, with an access point right across from our entrance.",
+    // Oak Point boat ramp, from Google Maps: the park road starts across Route 173 from our entrance.
+    pins: [
+      {
+        name: "Chain O'Lakes State Park, Oak Point access",
+        position: [42.4772, -88.1756],
+      },
+    ],
   },
   {
     id: "six-flags",
