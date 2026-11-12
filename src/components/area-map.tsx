@@ -117,7 +117,8 @@ export function AreaMap() {
     });
     instance.flyToBounds([parkLocation, ...points], {
       padding: [50, 50],
-      maxZoom: 13,
+      // Far pins settle well below this; it only lets the across-the-street park access separate from our pin.
+      maxZoom: 16,
       animate: !reduced,
     });
   };
