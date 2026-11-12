@@ -11,7 +11,7 @@ export function EventsPage({ content: c }: { content: SiteContent }) {
   const events = upcomingEvents(c.events);
   return (
     <>
-      <SiteHeader phone={c.contact.phone} />
+      <SiteHeader contact={c.contact} />
       <main id="main" className="container-wide pb-16">
         <div className="page-intro">
           <p className="eyebrow">Good company, all season long</p>

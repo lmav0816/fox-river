@@ -30,7 +30,7 @@ const getPublished = cache(
         updatedAt: (data.updated_at as string) || bundledContentDate,
       };
     },
-    ["published-site-content-v2"],
+    ["published-site-content-v3"],
     { tags: ["site-content"], revalidate: 3600 },
   ),
 );

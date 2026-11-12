@@ -27,6 +27,7 @@ import { Brand } from "./brand";
 import { previewPages, type PreviewPage } from "./preview-pages";
 import {
   contentSchema,
+  galleryLimit,
   validationMessage,
   type SiteContent,
 } from "@/lib/content-schema";
@@ -189,6 +190,50 @@ function MediaUpload({
         <p role="alert" className="mt-2 text-xs text-destructive">
           {error}
         </p>
+      )}
+    </div>
+  );
+}
+
+function VideoField({
+  video,
+  onChange,
+  demo,
+  name,
+  hint,
+}: {
+  video: string;
+  onChange: (url: string) => void;
+  demo: boolean;
+  name: string;
+  hint: string;
+}) {
+  return (
+    <div className="mt-8 border-t pt-6">
+      <h3>{name[0].toUpperCase() + name.slice(1)}</h3>
+      <p className="mb-4 text-sm text-muted-foreground">{hint}</p>
+      <MediaUpload
+        demo={demo}
+        video
+        label={video ? `Replace ${name}` : `Upload ${name}`}
+        onUpload={onChange}
+      />
+      {video && (
+        <div className="mt-4">
+          <video
+            src={video}
+            controls
+            muted
+            className="max-h-64 w-full rounded"
+          />
+          <Button
+            variant="outline"
+            className="mt-3"
+            onClick={() => onChange("")}
+          >
+            Use photo only
+          </Button>
+        </div>
       )}
     </div>
   );
@@ -691,48 +736,17 @@ export function Editor({
                     })
                   }
                 />
-                <div className="mt-8 border-t pt-6">
-                  <h3>Drone video</h3>
-                  <p className="mb-4 text-sm text-muted-foreground">
-                    The hero photo appears while the video loads or when a
-                    visitor prefers reduced motion.
-                  </p>
-                  <MediaUpload
-                    demo={demo}
-                    video
-                    label={
-                      content.hero.video
-                        ? "Replace drone video"
-                        : "Upload drone video"
-                    }
-                    onUpload={(url) =>
-                      update((c) => {
-                        c.hero.video = url;
-                      })
-                    }
-                  />
-                  {content.hero.video && (
-                    <div className="mt-4">
-                      <video
-                        src={content.hero.video}
-                        controls
-                        muted
-                        className="max-h-64 w-full rounded"
-                      />
-                      <Button
-                        variant="outline"
-                        className="mt-3"
-                        onClick={() =>
-                          update((c) => {
-                            c.hero.video = "";
-                          })
-                        }
-                      >
-                        Use photo only
-                      </Button>
-                    </div>
-                  )}
-                </div>
+                <VideoField
+                  demo={demo}
+                  name="drone video"
+                  hint="The hero photo appears while the video loads or when a visitor prefers reduced motion."
+                  video={content.hero.video}
+                  onChange={(url) =>
+                    update((c) => {
+                      c.hero.video = url;
+                    })
+                  }
+                />
               </section>
               <section className="admin-panel">
                 <h2>Stay photos</h2>
@@ -761,6 +775,17 @@ export function Editor({
                   onChange={(image) =>
                     update((c) => {
                       c.river.image = image;
+                    })
+                  }
+                />
+                <VideoField
+                  demo={demo}
+                  name="river video"
+                  hint="Plays silently over the river photo once visitors scroll to it. The photo shows while it loads or when a visitor prefers reduced motion."
+                  video={content.river.video}
+                  onChange={(url) =>
+                    update((c) => {
+                      c.river.video = url;
                     })
                   }
                 />
@@ -812,7 +837,7 @@ export function Editor({
                     </div>
                   ))}
                 </div>
-                {content.gallery.length < 24 && (
+                {content.gallery.length < galleryLimit && (
                   <div className="mt-6">
                     <MediaUpload
                       demo={demo}

@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PGlite } from "@electric-sql/pglite";
 import { readdir, readFile } from "node:fs/promises";
+import { defaultContent } from "../src/lib/default-content";
 const ownerId = "11111111-1111-4111-8111-111111111111";
 const visitorId = "22222222-2222-4222-8222-222222222222";
 let db: PGlite;
@@ -143,5 +144,42 @@ describe("owner content and media permissions", () => {
     expect((await db.query("select name from storage.objects")).rows).toEqual([
       { name: `${ownerId}/x.webp` },
     ]);
+  });
+  it("moves content still on the old bundled gallery to the new photos, leaving custom galleries alone", async () => {
+    const sql = await readFile(
+      new URL(
+        "../supabase/migrations/202611110001_client_photo_round.sql",
+        import.meta.url,
+      ),
+      "utf8",
+    );
+    const oldGallery = sql.match(/content->'gallery' = '(.*?)'::jsonb/)![1];
+    const custom = [{ src: "/images/pool.webp", alt: "Pool" }];
+    await db.query(
+      "update public.site_content set content = jsonb_build_object('gallery', $1::jsonb, 'river', jsonb_build_object('image', jsonb_build_object('src', '/images/river-docks.webp', 'alt', 'Docks'))) where id = 'published'",
+      [oldGallery],
+    );
+    await db.query(
+      "update public.site_content set content = jsonb_build_object('gallery', $1::jsonb, 'river', jsonb_build_object('image', jsonb_build_object('src', '/images/pool.webp', 'alt', 'Pool'))), version = 3 where id = 'draft'",
+      [JSON.stringify(custom)],
+    );
+    await db.exec(sql);
+    const rows = Object.fromEntries(
+      (
+        await db.query<{
+          id: string;
+          content: typeof defaultContent;
+          version: number;
+        }>("select id, content, version from public.site_content")
+      ).rows.map((row) => [row.id, row]),
+    );
+    expect(rows.published.content.gallery).toEqual(defaultContent.gallery);
+    expect(rows.published.content.river.image).toEqual(
+      defaultContent.river.image,
+    );
+    expect(rows.draft.content.gallery).toEqual(custom);
+    expect(rows.draft.content.river.image.src).toBe("/images/pool.webp");
+    expect(rows.draft.version).toBe(4);
+    expect(rows.published.version).toBe(1);
   });
 });

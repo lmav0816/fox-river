@@ -40,7 +40,7 @@ Events are calendar dates without a time zone. `src/lib/events.ts` reads "today"
 
 ## Security headers
 
-`next.config.ts` sends a Content Security Policy, HSTS, `Cross-Origin-Opener-Policy`, `Cross-Origin-Resource-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy` on every response. The policy allows scripts only from the site itself. It keeps `'unsafe-inline'` for scripts and styles because Next.js inlines its own bootstrap code, and per-request nonces would make every page dynamic. Uploads, media, and API calls may also reach the Supabase origin from `NEXT_PUBLIC_SUPABASE_URL`, and sign-in may post through Supabase to `accounts.google.com`. Any new third-party script, embed, font, or analytics service needs its origin added to the policy, or the browser blocks it.
+`next.config.ts` sends a Content Security Policy, HSTS, `Cross-Origin-Opener-Policy`, `Cross-Origin-Resource-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy` on every response. The policy allows scripts only from the site itself. It keeps `'unsafe-inline'` for scripts and styles because Next.js inlines its own bootstrap code, and per-request nonces would make every page dynamic. Uploads, media, and API calls may also reach the Supabase origin from `NEXT_PUBLIC_SUPABASE_URL`, and sign-in may post through Supabase to `accounts.google.com`. Any new third-party script, embed, font, or analytics service needs its origin added to the policy, or the browser blocks it. The homepage area map loads OpenStreetMap tiles from `https://tile.openstreetmap.org`, which `img-src` allows; Leaflet itself is bundled, so no script origin is needed.
 
 ## Search visibility
 
@@ -74,7 +74,7 @@ Do this with an owner present, using the business's own Google account, not a de
 
 ## Content and launch dependencies
 
-The homepage uses the client's October 2026 photography and drone footage, resized and converted to WebP and H.264. The original filename of each file is recorded in `public/images/sources.json`, alongside the photos first downloaded from the old website. Those older files stay in place because previously published content may still reference them. The cabin card still uses a river sunset from the old website, because no cabin photo has been supplied yet. The client-supplied September 17 logo is used in the header, footer, owner editor, and browser icon, with transparent assets prepared using imagegen. Fonts are self-hosted with their OFL licenses.
+The homepage uses the client's October and November 2026 photography, drone footage, and boat-ride video, resized and converted to WebP and H.264. The original filename of each file is recorded in `public/images/sources.json`, alongside the photos first downloaded from the old website. Those older files stay in place because previously published content may still reference them. The cabin card still uses a river sunset from the old website, because no cabin photo has been supplied yet. The client-supplied September 17 logo is used in the header, footer, owner editor, and browser icon, with transparent assets prepared using imagegen. Fonts are self-hosted with their OFL licenses.
 
 The source content was checked on September 17, 2026. Confirm these with the client before launch:
 
@@ -89,7 +89,7 @@ The source content was checked on September 17, 2026. Confirm these with the cli
 
 ## Deployment
 
-Use a client-owned Vercel project and the environment variables above. Apply the migration before building against a configured Supabase project. Set a stable preview origin and OAuth callback for a connected editor review. Keep `SITE_INDEXABLE=false` on previews. Preview deployments should use a separate Supabase project if edits must not affect production.
+Use a client-owned Vercel project and the environment variables above. Apply the migrations before building against a configured Supabase project. Content migrations (such as `202611110001_client_photo_round.sql`) are the exception on an existing project: deploy the code first, because older code may reject the content they write. Set a stable preview origin and OAuth callback for a connected editor review. Keep `SITE_INDEXABLE=false` on previews. Preview deployments should use a separate Supabase project if edits must not affect production.
 
 Before the production domain cutover, verify real Google sign-in, owner and non-owner accounts, upload, save, preview, publish, and public cache refresh against the configured project. The local database tests exercise PostgreSQL policies with stubbed Supabase-owned schemas; they do not verify a hosted project's configuration or the Google consent flow.
 

@@ -1,5 +1,7 @@
 import type { SiteContent } from "./content-schema";
 
+export const defaultRiverVideo = "/images/river-cruise.mp4";
+
 // Migrated from foxriverrecreation.com on 2026-09-17. See README for pending client confirmations.
 export const defaultContent: SiteContent = {
   hero: {
@@ -57,9 +59,10 @@ export const defaultContent: SiteContent = {
     title: "Take the scenic route.\nPreferably by water.",
     body: "Launch your boat and explore the Chain O'Lakes, rent a canoe for a quiet paddle, or find your favorite fishing spot. With the Fox River right here, a day on the water is always within reach.",
     image: {
-      src: "/images/river-docks.webp",
-      alt: "Pontoon boats tied up at the campground docks on the Fox River",
+      src: "/images/river-dock-view.webp",
+      alt: "A boat dock on the Fox River on a clear autumn day",
     },
+    video: defaultRiverVideo,
   },
   amenities: [
     {
@@ -125,32 +128,88 @@ export const defaultContent: SiteContent = {
   ],
   gallery: [
     {
+      src: "/images/sunset-over-river.webp",
+      alt: "An orange sunset over the Fox River from the campground",
+    },
+    {
+      src: "/images/kids-pontoon-ride.webp",
+      alt: "Kids in life jackets cheering on a pontoon boat ride",
+    },
+    {
       src: "/images/pool-summer.webp",
       alt: "Guests swimming in the outdoor pool on a sunny day",
     },
     {
-      src: "/images/easter-bunny-visit.webp",
-      alt: "Kids with Easter baskets posing with the Easter Bunny",
+      src: "/images/golf-cart-parade.webp",
+      alt: "Flag-decorated golf carts lined up for the Fourth of July parade",
     },
     {
       src: "/images/hayride.webp",
       alt: "Kids waving from a hay wagon ride through the campground",
     },
     {
+      src: "/images/volleyball-dive.webp",
+      alt: "A player diving for the ball in a sand volleyball game",
+    },
+    {
+      src: "/images/christmas-in-july-santa.webp",
+      alt: "Santa visiting campers at the Christmas in July party",
+    },
+    {
+      src: "/images/pig-roast.webp",
+      alt: "Campers gathered under the pavilion for the pig roast",
+    },
+    {
+      src: "/images/camp-store-river-view.webp",
+      alt: "Looking over the camp store and parking lot toward the river",
+    },
+    {
+      src: "/images/easter-bunny-visit.webp",
+      alt: "Kids with Easter baskets posing with the Easter Bunny",
+    },
+    {
+      src: "/images/kayaks-on-river.webp",
+      alt: "Kayakers paddling past the riverside patio",
+    },
+    {
+      src: "/images/ice-cream-treats.webp",
+      alt: "Kids in swimsuits enjoying ice cream outside the camp store",
+    },
+    {
       src: "/images/gazebo-dinner.webp",
       alt: "Friends sharing dinner under a gazebo by the water",
     },
     {
-      src: "/images/welcome-sign.webp",
-      alt: "The Fox River Recreation welcome sign at the park entrance",
+      src: "/images/canoeing.webp",
+      alt: "A canoe out on the Fox River",
+    },
+    {
+      src: "/images/pavilion-night.webp",
+      alt: "The pavilion lit up for an evening party",
+    },
+    {
+      src: "/images/dance-night.webp",
+      alt: "Campers dancing under colorful lights at a party",
     },
     {
       src: "/images/sand-volleyball.webp",
       alt: "A game of sand volleyball beside the RV sites",
     },
     {
+      src: "/images/boats-from-site.webp",
+      alt: "Boats docked along the river beside the campsites",
+    },
+    {
       src: "/images/fourth-of-july-picnic.webp",
       alt: "A Fourth of July picnic with red, white, and blue balloons",
+    },
+    {
+      src: "/images/relay-race.webp",
+      alt: "Kids running a relay race by the playground",
+    },
+    {
+      src: "/images/flower-garden.webp",
+      alt: "A flower garden in full bloom at a seasonal site",
     },
     {
       src: "/images/picnic-under-umbrellas.webp",
@@ -161,12 +220,32 @@ export const defaultContent: SiteContent = {
       alt: "Live music and dancing under the pavilion",
     },
     {
+      src: "/images/fathers-day-basketball.webp",
+      alt: "A Father's Day basketball game on the court",
+    },
+    {
+      src: "/images/pool-afternoon.webp",
+      alt: "Families swimming in the campground pool",
+    },
+    {
       src: "/images/basketball-court.webp",
       alt: "Kids shooting hoops at the campground basketball court",
     },
     {
+      src: "/images/shaded-campsites.webp",
+      alt: "RV sites under tall shade trees",
+    },
+    {
+      src: "/images/evening-get-together.webp",
+      alt: "Campers relaxing together on a patio in the evening",
+    },
+    {
       src: "/images/tug-of-war.webp",
       alt: "A tug-of-war match on the lawn",
+    },
+    {
+      src: "/images/playground.webp",
+      alt: "Kids on the playground slide",
     },
     {
       src: "/images/playground-games.webp",
@@ -177,16 +256,28 @@ export const defaultContent: SiteContent = {
       alt: "Kids racing through a lawn game on a summer afternoon",
     },
     {
+      src: "/images/pavilion-celebration.webp",
+      alt: "Guests dressed up for a celebration beside a white party tent",
+    },
+    {
       src: "/images/kids-circle-game.webp",
       alt: "Kids sitting in a circle for a group game on the grass",
     },
     {
-      src: "/images/holiday-pavilion.webp",
-      alt: "Kids on hay bales at a holiday party in the pavilion",
+      src: "/images/fall-lodge-decor.webp",
+      alt: "The blue lodge decorated with pumpkins for fall",
+    },
+    {
+      src: "/images/halloween-decor.webp",
+      alt: "A ghost, hay bales, and pumpkins decorating a campsite for Halloween",
     },
     {
       src: "/images/halloween-party.webp",
       alt: "Campers in costume at the Halloween party in the lodge",
+    },
+    {
+      src: "/images/holiday-pavilion.webp",
+      alt: "Kids on hay bales at a holiday party in the pavilion",
     },
     {
       src: "/images/easter-lodge.webp",
@@ -203,6 +294,14 @@ export const defaultContent: SiteContent = {
     {
       src: "/images/kids-field-game.webp",
       alt: "Kids playing a game in the open field",
+    },
+    {
+      src: "/images/welcome-sign.webp",
+      alt: "The Fox River Recreation welcome sign at the park entrance",
+    },
+    {
+      src: "/images/sunset-reflection.webp",
+      alt: "Trees reflected in the still river at sunset",
     },
   ],
   reviews: [
@@ -391,8 +490,7 @@ export const defaultContent: SiteContent = {
     {
       id: "passes",
       title: "Passes & visitors",
-      description:
-        "Please stop at the office when you arrive.",
+      description: "Please stop at the office when you arrive.",
       rates: [
         {
           id: "pass-family",

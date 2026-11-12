@@ -12,7 +12,7 @@ export default async function Page() {
   const { contact } = await getContent();
   return (
     <>
-      <SiteHeader phone={contact.phone} />
+      <SiteHeader contact={contact} />
       <main id="main" className="container-wide pb-20">
         <div className="page-intro">
           <p className="eyebrow">Fox River Recreation</p>
@@ -61,7 +61,9 @@ export default async function Page() {
             <p>
               Links to Facebook and Google Maps open those services, which have
               their own privacy policies. Their embeds are not loaded on this
-              website.
+              website. The map of the area on the homepage loads its images from
+              OpenStreetMap, which receives your IP address and browser details
+              when you scroll to it, under its own privacy policy.
             </p>
           </section>
           <section>

@@ -148,5 +148,115 @@
         "source": "IMG_2073.jpeg"
       }
     ]
+  },
+  "clientPhotosNovember": {
+    "source": "Client Google Drive download (\"Updated Website Drive Upload\"), received 2026-11-11",
+    "preparation": "Resized to 1920px on the long edge and converted to WebP without metadata. Video trimmed to 24 seconds, scaled to 1280px wide, and re-encoded to H.264.",
+    "files": [
+      {
+        "file": "sunset-over-river.webp",
+        "source": "Sunset.jpeg"
+      },
+      {
+        "file": "kids-pontoon-ride.webp",
+        "source": "boat fun.jpeg"
+      },
+      {
+        "file": "pool-afternoon.webp",
+        "source": "pool.jpeg"
+      },
+      {
+        "file": "golf-cart-parade.webp",
+        "source": "4th july golf carts.jpeg"
+      },
+      {
+        "file": "pig-roast.webp",
+        "source": "PIG ROAST.jpeg"
+      },
+      {
+        "file": "volleyball-dive.webp",
+        "source": "volleyball action shot.jpeg"
+      },
+      {
+        "file": "christmas-in-july-santa.webp",
+        "source": "XMAS JULY 5.jpeg"
+      },
+      {
+        "file": "camp-store-river-view.webp",
+        "source": "Overall 7 .jpeg"
+      },
+      {
+        "file": "canoeing.webp",
+        "source": "canoeing.jpeg"
+      },
+      {
+        "file": "ice-cream-treats.webp",
+        "source": "ice cream from store.jpeg"
+      },
+      {
+        "file": "flower-garden.webp",
+        "source": "use somewhere in front beautiful .jpeg"
+      },
+      {
+        "file": "boats-from-site.webp",
+        "source": "Scenic boat from site.jpg"
+      },
+      {
+        "file": "halloween-decor.webp",
+        "source": "halloween decor.jpeg"
+      },
+      {
+        "file": "fall-lodge-decor.webp",
+        "source": "decor.jpeg"
+      },
+      {
+        "file": "pavilion-celebration.webp",
+        "source": "event at pavilion use in gallery.JPG"
+      },
+      {
+        "file": "relay-race.webp",
+        "source": "action shot relay.jpeg"
+      },
+      {
+        "file": "kayaks-on-river.webp",
+        "source": "Scenic river view.jpg"
+      },
+      {
+        "file": "evening-get-together.webp",
+        "source": "tenants enjoying evening.jpeg"
+      },
+      {
+        "file": "fathers-day-basketball.webp",
+        "source": "fathers day.jpeg"
+      },
+      {
+        "file": "dance-night.webp",
+        "source": "DANCE.jpeg"
+      },
+      {
+        "file": "pavilion-night.webp",
+        "source": "Big event.JPG"
+      },
+      {
+        "file": "shaded-campsites.webp",
+        "source": "sites scene 11.HEIC"
+      },
+      {
+        "file": "playground.webp",
+        "source": "playground.jpg"
+      },
+      {
+        "file": "sunset-reflection.webp",
+        "source": "sunset scenery.jpeg"
+      },
+      {
+        "file": "river-dock-view.webp",
+        "source": "main photo gorgeous river shot.HEIC"
+      },
+      {
+        "file": "river-cruise.mp4",
+        "source": "Video taken from River.mov @ 1:40-2:04, audio removed"
+      }
+    ]
   }
 }
