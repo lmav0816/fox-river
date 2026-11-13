@@ -76,7 +76,7 @@ export function RatesPage({ content: c }: { content: SiteContent }) {
             Not sure which spot is right for you?
           </p>
           <a href={phoneHref(c.contact.phone)} className="text-link mt-5">
-            We&apos;re happy to help. Call {c.contact.phone} <ArrowUpRight />
+            We&apos;re happy to help. Call {c.contact.phone} <Phone />
           </a>
         </div>
       </main>
