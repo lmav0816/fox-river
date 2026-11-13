@@ -1,6 +1,6 @@
 import type { SiteContent } from "@/lib/content-schema";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { phoneHref } from "@/lib/format";
@@ -33,7 +33,7 @@ export function RulesPage({ content: c }: { content: SiteContent }) {
                 questions before you reserve.
               </p>
               <a href={phoneHref(c.contact.phone)} className="text-link mt-4">
-                Call {c.contact.phone} <ArrowUpRight />
+                Call {c.contact.phone} <Phone />
               </a>
             </div>
           )}

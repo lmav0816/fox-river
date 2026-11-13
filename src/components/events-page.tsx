@@ -1,6 +1,6 @@
 import type { SiteContent } from "@/lib/content-schema";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Clock, Phone } from "lucide-react";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { Card } from "./ui/card";
@@ -59,7 +59,7 @@ export function EventsPage({ content: c }: { content: SiteContent }) {
                 the office to ask what&apos;s coming up.
               </p>
               <a href={phoneHref(c.contact.phone)} className="text-link mt-4">
-                Call {c.contact.phone} <ArrowUpRight />
+                Call {c.contact.phone} <Phone />
               </a>
             </div>
           )}

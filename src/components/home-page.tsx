@@ -330,7 +330,7 @@ export function HomePage({ content: c }: { content: SiteContent }) {
             </p>
             <Button asChild className="mt-7 h-12 rounded-sm px-6 text-xs">
               <a href={phoneHref(c.contact.phone)}>
-                Let&apos;s plan your stay <ArrowUpRight size={16} />
+                Let&apos;s plan your stay <Phone size={16} />
               </a>
             </Button>
             <p className="mt-6 text-xs leading-6 text-muted-foreground">
