@@ -357,14 +357,22 @@ export function HomePage({ content: c }: { content: SiteContent }) {
               <Phone />
               <div>
                 <h3>Give us a call</h3>
-                <a href={phoneHref(c.contact.phone)}>{c.contact.phone}</a>
+                <a
+                  href={phoneHref(c.contact.phone)}
+                  className="underline underline-offset-4"
+                >
+                  {c.contact.phone}
+                </a>
               </div>
             </div>
             <div className="visit-row">
               <Mail />
               <div>
                 <h3>Drop us a line</h3>
-                <a className="break-all" href={`mailto:${c.contact.email}`}>
+                <a
+                  className="break-all underline underline-offset-4"
+                  href={`mailto:${c.contact.email}`}
+                >
                   {c.contact.email}
                 </a>
               </div>
